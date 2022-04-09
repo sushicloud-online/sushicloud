@@ -1,6 +1,8 @@
 # sushicloud
 
-![sushicloud_logo](https://raw.githubusercontent.com/sushicloud-online/sushicloud/main/assets/sushicloud.png)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/sushicloud-online/sushicloud/main/assets/sushicloud.png" alt="sushicloud"/>
+</p>
 
 Online repository of sushicloud, a project for CSIT 337 at Montclair State University. sushicloud is an online database for browsing and tracking all your favorite animes. 
 
