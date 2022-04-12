@@ -13,3 +13,11 @@ Online repository of sushicloud, a project for CSIT 337 at Montclair State Unive
 - Run XAMPP and start Apache and MySQL
 - Create database in phpMyAdmin. (copy and paste db from this repo)
 - Go to file in htdocs and your done!
+
+## To Do List
+
+- [] Login & Registration System (User and Admin)
+- [] Finish creating all user facing files
+- [] Individual anime pages will only be one fluid file
+- [] Admin must ... remove user, add new anime, delete a anime, modify 
+anime

@@ -29,7 +29,7 @@
             <h1 class="display-1">Welcome to sushicloud.com</h1>
             <p class="lead">Browse and track all your favorite anime in seconds!</p>
             <a href="./login.php"><button type="button" class="btn btn-dark" id="landing_page_buttons">Login</button></a>
-            <a href=""><button type="button" class="btn btn-dark" id="landing_page_buttons">Register</button></a>
+            <a href="./register.php"><button type="button" class="btn btn-dark" id="landing_page_buttons">Register</button></a>
         </div>
 
     </div>
