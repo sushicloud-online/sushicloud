@@ -17,6 +17,8 @@ Online repository of sushicloud, a project for CSIT 337 at Montclair State Unive
 ## To Do List
 
 - [ ] Login & Registration System (User and Admin)
+  - [x] Register Validation (user added to database)
+  - [ ] Login Validation
 - [ ] Finish creating all user facing files
 - [ ] Individual anime pages will only be one fluid file
 - [ ] Admin must ... remove user, add new anime, delete a anime, modify 
