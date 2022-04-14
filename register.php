@@ -29,9 +29,9 @@
             <img src="./assets/sushicloud.png" width="300px" height="100px" alt="sushicloud">
         </div>
 
-        <form class="form-horizontal form-group mt-5" action="./login.php" method="post">
+        <form class="form-horizontal form-group mt-5" action="./background_scripts/registration_validation.php" method="post">
             <div class="row">
-                <label class="control-label col-sm-2" for="fname">Username:</label>
+                <label class="control-label col-sm-2" for="username">Username:</label>
 
                 <div class="col-sm-8">
                     <input type="text" class="form-control" id="username" placeholder="Enter Username" name="username"
@@ -43,16 +43,16 @@
                 <label class="control-label col-sm-2" for="password">Password:</label>
 
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="password" placeholder="Enter Password" name="password"
+                    <input type="password" class="form-control" id="password" placeholder="Enter Password" name="password"
                         required>
                 </div>
             </div>
 
             <div class="row mt-3">
-                <label class="control-label col-sm-2" for="c_password">Confirm Password:</label>
+                <label class="control-label col-sm-2" for="password">Email:</label>
 
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="c_password" placeholder="Confirm Password" name="c_password"
+                    <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email"
                         required>
                 </div>
             </div>
@@ -88,7 +88,7 @@
                 <label class="control-label col-sm-2" for="city">City:</label>
 
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="lname" placeholder="Enter City" name="lname"
+                    <input type="text" class="form-control" id="city" placeholder="Enter City" name="city"
                         required>
                 </div>
             </div>
@@ -97,7 +97,7 @@
                 <label class="control-label col-sm-2" for="state">State:</label>
 
                 <div class="col-sm-8">
-                        <select id='state' name='state' class='form-control' required>
+                        <select id="state" name="state" class="form-control" required>
                     	<option value=''>Select a State</option>
                         <option value="AL">Alabama</option>
                         <option value="AK">Alaska</option>
