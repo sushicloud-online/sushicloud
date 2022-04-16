@@ -32,7 +32,7 @@
             <a href="./register.php"><button type="button" class="btn btn-dark" id="landing_page_buttons">Register</button></a>
         </div>
         <div class="text-center">
-            <a href="./admin_login.php">Admin? Login.</a>
+            <a href="./admin/admin_login.php">Admin? Login.</a>
         </div>
 
     </div>

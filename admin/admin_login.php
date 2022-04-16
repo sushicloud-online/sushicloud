@@ -21,15 +21,13 @@
         </div>
     </nav>
 
-
-
     <div class="container">
 
         <div class="text-center mx-auto mt-5">
-            <img src="./assets/sushicloud.png" width="300px" height="100px" alt="sushicloud">
+            <img src="../assets/sushicloud.png" width="300px" height="100px" alt="sushicloud">
         </div>
 
-        <form class="form-horizontal form-group mt-5" action="./background_scripts/login_validation.php" method="post">
+        <form class="form-horizontal form-group mt-5" action="./background_scripts/admin_login_validation.php" method="post">
             <div class="row">
                 <label class="control-label col-sm-2" for="fname">Username:</label>
 
@@ -43,12 +41,10 @@
                 <label class="control-label col-sm-2" for="lname">Password:</label>
 
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="password" placeholder="Enter Password" name="password"
+                    <input type="password" class="form-control" id="password" placeholder="Enter Password" name="password"
                         required>
                 </div>
             </div>
-
-
 
             <div class="row">
                 <div class="offset-sm-2 col-sm-10 mt-3">
