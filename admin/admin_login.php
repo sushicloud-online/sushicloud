@@ -29,7 +29,7 @@
 
         <form class="form-horizontal form-group mt-5" action="./background_scripts/admin_login_validation.php" method="post">
             <div class="row">
-                <label class="control-label col-sm-2" for="fname">Username:</label>
+                <label class="control-label col-sm-2" for="username">Username:</label>
 
                 <div class="col-sm-8">
                     <input type="text" class="form-control" id="username" placeholder="Enter Username" name="username"
@@ -38,7 +38,7 @@
             </div>
 
             <div class="row mt-3">
-                <label class="control-label col-sm-2" for="lname">Password:</label>
+                <label class="control-label col-sm-2" for="password">Password:</label>
 
                 <div class="col-sm-8">
                     <input type="password" class="form-control" id="password" placeholder="Enter Password" name="password"

@@ -44,7 +44,6 @@
 		$db = null;
 		exit();
 	}
-
 	//checks if password is correct
 	else if (password_verify($pass, $result['password'])) {
 		//if password is correct, redirects to homepage
@@ -53,7 +52,6 @@
 		$_SESSION['new_log'] = true;
 		header('Location: ../admin_homepage.php');
 	}
-
 	//if password is incorrect, redirects to login page
 	else {
 		$_SESSION['wrong_pass'] = true;
