@@ -1,3 +1,3 @@
 <?php 
-    echo "admin homepage 1";
+    echo "admin homepage 2";
 ?>
