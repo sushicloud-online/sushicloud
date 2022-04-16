@@ -1,5 +1,5 @@
 CREATE TABLE `users` (
-  `username` varchar(50),
+  `username` varchar(50) NOT NULL,
   `password` varchar(255),
   `email` varchar(50),
   `first_name` varchar(50),
@@ -16,12 +16,12 @@ CREATE TABLE `anime` (
   `image_url` varchar(50)
 )
 
-CREATE TABLE `admin` (
-  `username` varchar(50),
-  `password` varchar(255),
-  `email` varchar(50),
-  `first_name` varchar(50),
-  `last_name` varchar(50)
+CREATE TABLE `users` (
+  `username` varchar(50) NOT NULL,
+  `pass` varchar(255) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `first_name` varchar(50) DEFAULT NULL,
+  `last_name` varchar(50) DEFAULT NULL
 ) 
 
 
