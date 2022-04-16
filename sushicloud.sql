@@ -16,7 +16,7 @@ CREATE TABLE `anime` (
   `image_url` varchar(50)
 )
 
-CREATE TABLE `users` (
+CREATE TABLE `admin` (
   `username` varchar(50) NOT NULL,
   `pass` varchar(255) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
