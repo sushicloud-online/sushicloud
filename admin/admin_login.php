@@ -17,7 +17,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand mx-auto" href="../admin/admin_login.php">sushicloud.com</a>
+            <a class="navbar-brand mx-auto" href="../index.php">sushicloud.com</a>
         </div>
     </nav>
 
