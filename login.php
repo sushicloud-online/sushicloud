@@ -29,7 +29,7 @@
             <img src="./assets/sushicloud.png" width="300px" height="100px" alt="sushicloud">
         </div>
 
-        <form class="form-horizontal form-group mt-5" action="./login.php" method="post">
+        <form class="form-horizontal form-group mt-5" action="./background_scripts/login_validation.php" method="post">
             <div class="row">
                 <label class="control-label col-sm-2" for="fname">Username:</label>
 
