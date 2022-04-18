@@ -43,11 +43,6 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
     unset($_SESSION['mi_err']);
 }
 
-// Logout Function
-if (isset($_POST["logout"])) {
-    $_SESSION['loggedin'] == false;
-    header('Location: admin_login.php');
-}
 ?>
 
 <!doctype html>
