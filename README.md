@@ -12,7 +12,7 @@ Online repository of sushicloud, a project for CSIT 337 at Montclair State Unive
 - Clone repo into htdocs folder within XAMPP
 - Run XAMPP and start Apache and MySQL
 - Create database in phpMyAdmin. (copy and paste db from this repo)
-- Go to file in htdocs and your done!
+- Go to file in htdocs and you're done!
 
 ## To Do List
 
