@@ -1,3 +1,50 @@
+<?php
+//includes db connection
+require_once '../db_connect.php';
+
+//includes session info
+session_start();
+
+$notice = '';
+
+//checks if user is logged in
+if (!isset($_SESSION['logged_in'])) {
+    //if user is not logged in, redirects to login page
+    $_SESSION['need_log'] = true;
+    header('Location: admin_login.php');
+
+    //closes db connection
+    $db = null;
+    exit();
+}
+
+//informs the user if they have successfully registered
+else if (isset($_SESSION['reg_success']) && $_SESSION['reg_success'] == true) {
+    $notice = "<p class='text-success'>You have successfully registered!</p>";
+
+    unset($_SESSION['reg_success']);
+}
+
+//informs the user if they are already logged in
+else if (isset($_SESSION['already_li']) && $_SESSION['already_li'] == true) {
+    $notice = "<p class='text-danger'>You are already logged in.</p>";
+
+    unset($_SESSION['already_li']);
+}
+
+//informs the user they have newly logged in
+else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
+    $notice = "<p class='text-success'>You are now logged in!</p>";
+
+    unset($_SESSION['new_log']);
+} else if (isset($_SESSION['mi_err']) && $_SESSION['mi_err'] == true) {
+    $notice = "<p class='text-danger'>An error has occurred. Please try again.</p>";
+
+    unset($_SESSION['mi_err']);
+}
+
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -84,16 +131,6 @@
                                     <div class="form-group">
                                         <h5>Last Name:</h5>
                                         <?php echo $Lname; ?>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Row #2 -->
-                            <div class="row">
-                                <div class="col-md-12 mb-2">
-                                    <div class="form-group">
-                                        <h5>Address:</h5>
-                                        <?php echo $address; ?>
                                     </div>
                                 </div>
                             </div>
