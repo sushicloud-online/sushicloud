@@ -70,7 +70,7 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
                         <a class="nav-link" href="#">Settings</a>
                     </li>
                     <li class="nav-item">
-                        <<a class="nav-link" href="../user_logout.php">Logout</a>
+                        <a class="nav-link" href="../user_logout.php">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -87,7 +87,7 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
             <center>
                 <a href="insert_anime.php" class="btn btn-dark btn active" role="button">Add Anime</a>
                 <a href="#" class="btn btn-dark btn active" role="button">Edit Anime</a>
-            </center>   
+            </center>
         </div>
 
     </div>
