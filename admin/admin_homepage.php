@@ -67,7 +67,7 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Settings</a>
+                        <a class="nav-link" href="admin_settings.php">Settings</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Logout</a>
