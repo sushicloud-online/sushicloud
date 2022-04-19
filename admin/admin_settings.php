@@ -36,7 +36,7 @@
         </div>
         <div class="text-center p-2">
             <p class="lead">
-            <h1>Admin Account Details</h1>
+                <h1>Admin Account Details</h1>
             </p>
         </div>
     </div>
