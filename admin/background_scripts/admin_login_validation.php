@@ -46,6 +46,7 @@
 
 	//checks if password is correct
 	//something with else if here is wrong, for some reason it's evaluating to false
+	
 	/* else if (password_verify($pass, $result['password']))
 	// password verify's second param needs to be a hashed password that's why we got an error.
 	   We should prob make an admin create account so that we can make it secure. Otherwise the fix below works
