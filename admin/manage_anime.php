@@ -85,7 +85,7 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
 
         <div class="row offset mt-5">
             <center>
-                <a href="#" class="btn btn-dark btn active" role="button">Add Anime</a>
+                <a href="add_anime.php" class="btn btn-dark btn active" role="button">Add Anime</a>
                 <a href="#" class="btn btn-dark btn active" role="button">Edit Anime</a>
             </center>   
         </div>
