@@ -17,7 +17,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand mx-auto" href="../index.php">sushicloud.com</a>
+            <a class="navbar-brand mx-auto" href="../index.php">sushicloud</a>
         </div>
     </nav>
 
@@ -41,7 +41,7 @@
                 <label class="control-label col-sm-2" for="password">Password:</label>
 
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="password" placeholder="Enter Password" name="password"
+                    <input type="password" class="form-control" id="password" placeholder="Enter Password" name="password"
                         required>
                 </div>
             </div>

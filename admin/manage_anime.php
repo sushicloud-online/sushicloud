@@ -14,7 +14,7 @@ if (!isset($_SESSION['logged_in'])) {
     header('Location: admin_login.php');
 
     //closes db connection
-    $db = close;
+    $db = null;
     exit();
 }
 
@@ -63,14 +63,14 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="admin_homepage.php">sushicloud.com</a>
+            <a class="navbar-brand" href="admin_homepage.php">sushicloud</a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="#">Settings</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Logout</a>
+                        <a class="nav-link" href="../user_logout.php">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -85,9 +85,9 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
 
         <div class="row offset mt-5">
             <center>
-                <a href="add_anime.php" class="btn btn-dark btn active" role="button">Add Anime</a>
+                <a href="insert_anime.php" class="btn btn-dark btn active" role="button">Add Anime</a>
                 <a href="#" class="btn btn-dark btn active" role="button">Edit Anime</a>
-            </center>   
+            </center>
         </div>
 
     </div>

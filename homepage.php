@@ -14,7 +14,7 @@
         header('Location: login.php');
 
         //closes db connection
-        $db->close();
+        $db = null;
         exit();
     }
 
@@ -65,7 +65,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="./homepage.php">sushicloud.com</a>
+            <a class="navbar-brand" href="./homepage.php">sushicloud</a>
             <div class="collapse navbar-collapse" id="navbarNav">   
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">

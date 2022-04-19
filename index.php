@@ -17,7 +17,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand mx-auto" href="./index.php">sushicloud.com</a>
+            <a class="navbar-brand mx-auto" href="./index.php">sushicloud</a>
         </div>
     </nav>
 
@@ -26,7 +26,7 @@
             <img src="./assets/sushicloud.png" width="600px" height="200px" alt="sushicloud">
         </div>
         <div class="text-center p-2">
-            <h1 class="display-1">Welcome to sushicloud.com</h1>
+            <h1 class="display-1">Welcome to sushicloud</h1>
             <p class="lead">Browse and track all your favorite anime in seconds!</p>
             <a href="./login.php"><button type="button" class="btn btn-dark" id="landing_page_buttons">Login</button></a>
             <a href="./register.php"><button type="button" class="btn btn-dark" id="landing_page_buttons">Register</button></a>
