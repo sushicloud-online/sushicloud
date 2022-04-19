@@ -80,13 +80,13 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
     <div class="container">
 
         <div class="text-center mx-auto mt-5">
-            <img src="../assets/sushicloud.png" width="600px" height="200px" alt="sushicloud">
+            <img src="../assets/sushicloud.png" width="300px" height="100px" alt="sushicloud">
         </div>
 
         <div class="row offset mt-5">
             <center>
-                <a href="manage_anime.php" class="btn btn-dark btn-lg active" role="button">Manage Anime</a>
-                <a href="manage_users.php" class="btn btn-dark btn-lg active" role="button">Manage Users</a>
+                <a href="#" class="btn btn-dark btn active" role="button">Add Employee</a>
+                <a href="#" class="btn btn-dark btn active" role="button">Edit User and Employee</a>
             </center>   
         </div>
 
