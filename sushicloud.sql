@@ -1,10 +1,10 @@
 CREATE TABLE `users` (
   `username` varchar(50) NOT NULL,
-  `password` varchar(255),
-  `email` varchar(50),
-  `first_name` varchar(50),
-  `last_name` varchar(50),
-  `address` varchar(255)
+  `password` varchar(255) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `first_name` varchar(50) DEFAULT NULL,
+  `last_name` varchar(50) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL
 ) 
 
 CREATE TABLE `anime` (
@@ -18,7 +18,7 @@ CREATE TABLE `anime` (
 
 CREATE TABLE `admin` (
   `username` varchar(50) NOT NULL,
-  `pass` varchar(255) DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
   `email` varchar(50) DEFAULT NULL,
   `first_name` varchar(50) DEFAULT NULL,
   `last_name` varchar(50) DEFAULT NULL

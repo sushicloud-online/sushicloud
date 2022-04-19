@@ -21,7 +21,6 @@
 		//if all input was not passed, redirects user to login page
 		$_SESSION['login_err'] = true;
 		header('Location: ../admin_login.php');
-
 		//closes db connection
 		$db = null;
 		exit();
@@ -44,18 +43,25 @@
 		$db = null;
 		exit();
 	}
+
 	//checks if password is correct
-	else if (password_verify($pass, $result['password'])) {
+	//something with else if here is wrong, for some reason it's evaluating to false
+	/* else if (password_verify($pass, $result['password']))
+	// password verify's second param needs to be a hashed password that's why we got an error.
+	   We should prob make an admin create account so that we can make it secure. Otherwise the fix below works
+	*/
+	else if ($pass == $result['password']){
 		//if password is correct, redirects to homepage
 		$_SESSION['logged_in'] = true;
 		$_SESSION['user'] = $user;
 		$_SESSION['new_log'] = true;
 		header('Location: ../admin_homepage.php');
 	}
+
 	//if password is incorrect, redirects to login page
 	else {
 		$_SESSION['wrong_pass'] = true;
-		header('Location: ../admin_login.php');
+		header('Location: ./admin_login.php');
 	}
 
 	//closes db connection
