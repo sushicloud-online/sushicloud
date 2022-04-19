@@ -14,7 +14,7 @@ if (!isset($_SESSION['logged_in'])) {
     header('Location: admin_login.php');
 
     //closes db connection
-    $db = close;
+    $db = null;
     exit();
 }
 

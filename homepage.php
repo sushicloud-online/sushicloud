@@ -14,7 +14,7 @@
         header('Location: login.php');
 
         //closes db connection
-        $db->close();
+        $db = null;
         exit();
     }
 
