@@ -62,7 +62,7 @@
 	//if password is incorrect, redirects to login page
 	else {
 		$_SESSION['wrong_pass'] = true;
-		header('Location: ./admin_login.php');
+		header('Location: ../admin_login.php');
 	}
 
 	//closes db connection
