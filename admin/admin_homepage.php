@@ -63,7 +63,7 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="admin_homepage.php">sushicloud.com</a>
+            <a class="navbar-brand" href="admin_homepage.php">sushicloud</a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
