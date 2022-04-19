@@ -41,7 +41,7 @@
                 <label class="control-label col-sm-2" for="password">Password:</label>
 
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="password" placeholder="Enter Password" name="password"
+                    <input type="password" class="form-control" id="password" placeholder="Enter Password" name="password"
                         required>
                 </div>
             </div>
