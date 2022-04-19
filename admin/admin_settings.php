@@ -36,10 +36,73 @@
         </div>
         <div class="text-center p-2">
             <p class="lead">
-                <h1>Admin Account Details</h1>
+            <h1>Admin Account Details</h1>
             </p>
         </div>
     </div>
+    <section class="vh-200">
+
+        <div class="container py-3 h-50">
+            <div class="row justify-content-center align-items-center h-100">
+                <div class="col-12 col-lg-9 col-xl-7">
+                    <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                        <div class="card-body p-4 p-md-5">
+
+                            <!-- Row #2 -->
+                            <div class="row">
+                                <div class="col-md-6 mb-1">
+                                    <div class="form-group">
+                                        <h5>Username:</h5>
+                                        <?php echo $user; ?>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Row #2 -->
+                            <div class="row">
+                                <div class="col-md-12 mb-2">
+                                    <div class="form-group">
+                                        <h5>Email:</h5>
+                                        <?php echo $email; ?>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Row #2 -->
+                            <div class="row">
+                                <div class="col-md-12 mb-2">
+                                    <div class="form-group">
+                                        <h5>First Name:</h5>
+                                        <?php echo $Fname; ?>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Row #2 -->
+                            <div class="row">
+                                <div class="col-md-12 mb-2">
+                                    <div class="form-group">
+                                        <h5>Last Name:</h5>
+                                        <?php echo $Lname; ?>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Row #2 -->
+                            <div class="row">
+                                <div class="col-md-12 mb-2">
+                                    <div class="form-group">
+                                        <h5>Address:</h5>
+                                        <?php echo $address; ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
