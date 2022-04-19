@@ -32,7 +32,7 @@
             <a href="./register.php"><button type="button" class="btn btn-dark" id="landing_page_buttons">Register</button></a>
         </div>
         <div class="text-center">
-            <a href="./admin/admin_login.php">Admin? Login.</a>
+            <a href="./admin/admin_login.php" style="color: rgba(232,84,74,255); font-weight: bold;">Admin? Login.</a>
         </div>
 
     </div>
