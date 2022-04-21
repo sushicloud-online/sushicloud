@@ -44,6 +44,8 @@
 
         unset($_SESSION['mi_err']);
     }
+
+    
 ?>
 
 <!doctype html>
@@ -99,7 +101,7 @@
                         <option value="2019">2019</option>
                     </select>
                 </div>
-                <div class="col">
+                <!-- <div class="col">
                     <select name="season" class="form-control">
                         <option value="">Season</option>
                         <option value="f21">Fall 2021</option>
@@ -112,7 +114,7 @@
                         <option value="su19">Summer 2019</option>
                         <option value="sp19">Spring 2019</option>
                     </select>
-                </div>
+                </div> -->
                 <div class="col">
                     <select name="genre" class="form-control">
                         <option value="">Genre</option>
