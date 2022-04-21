@@ -84,6 +84,49 @@
 
     <div class="container text-center mx-auto">
         <h2 class="mt-2">Search for your favorite anime!</h2>
+
+        <form action="./background_scripts/query_anime.php" method="post">
+            <div class="row">
+                <div class="col">
+                    <input name="title" type="text" class="form-control" placeholder="Anime Title">
+                </div>
+                <div class="col">
+                    <select name="year" class="form-control">
+                        <option value="">Year</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <select name="season" class="form-control">
+                        <option value="">Season</option>
+                        <option value="f21">Fall 2021</option>
+                        <option value="su21">Summer 2021</option>
+                        <option value="sp21">Spring 2021</option>
+                        <option value="f20">Fall 2020</option>
+                        <option value="su20">Summer 2020</option>
+                        <option value="sp20">Spring 2020</option>
+                        <option value="f19">Fall 2019</option>
+                        <option value="su19">Summer 2019</option>
+                        <option value="sp19">Spring 2019</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <select name="genre" class="form-control">
+                        <option value="">Genre</option>
+                        <option value="Romance">Romance</option>
+                        <option value="Action">Action</option>
+                        <option value="Comedy">Comedy</option>
+                        <option value="SlifeofLife">Slice of Life</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <input name="search btn" type="button" class="btn btn-dark form-control" style="background-color: rgba(232,84,74,255);" value="Submit">
+                </div>
+            </div>
+        </form>
     </div>
 
 
