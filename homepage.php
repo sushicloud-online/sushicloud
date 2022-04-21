@@ -45,7 +45,60 @@
         unset($_SESSION['mi_err']);
     }
 
-    
+    $anime_search = 'SELECT title, year, description, image_url from anime';
+
+    // checking if search terms were inputted
+    if (!empty($_POST['title']) || !empty($_POST['year']) || !empty($_POST['genre'])) {
+		$anime_search = $anime_search.' where';
+
+		//adds title to query if title was input
+		if (!empty($_POST['title'])) {
+			$title = trim($_POST['title']);
+			$anime_search = $anime_search.' title like :title';
+
+			if (!empty($_POST['year']) || !empty($_POST['genre']))
+				$anime_search = $anime_search.' or';
+		}
+
+		//adds year to query if genre was selected
+		if (!empty($_POST['year'])) {
+			$year = $_POST['year'];
+			$anime_search = $anime_search.' year like :year';
+
+			if (!empty($_POST['genre']))
+				$anime_search = $anime_search.' or';
+		}
+
+		//adds genre to query if genre was selected
+		if (!empty($_POST['genre'])) {
+			$genre = $_POST['genre'];
+			$anime_search = $anime_search.' genre = :genre';
+		}
+	}
+
+    //prepares query
+	$query = $db->prepare($anime_search);
+
+	//binds title parameter if exists
+	if (!empty($title)) {
+		$title = '%'.$title.'%';
+		$query->bindParam(':title', $title);
+	}
+
+    //binds rating parameter if exists
+	if (!empty($year))
+        $query->bindParam(':year', $year);
+
+	//binds genre parameter if exists
+	if (!empty($genre)) {
+		$genre = '%'.$genre.'%';
+		$query->bindParam(':genre', $genre);
+    }
+
+	//runs query and gets results
+	$query->execute();
+	$results = $query->fetchAll();
+
 ?>
 
 <!doctype html>
@@ -85,10 +138,10 @@
     </nav>
 
     <div class="container text-center mx-auto">
-        <h2 class="mt-2">Search for your favorite anime!</h2>
+        <h2 class="mt-3">Search for your favorite anime!</h2>
 
-        <form action="./background_scripts/query_anime.php" method="post">
-            <div class="row">
+        <form action="./homepage.php" method="post">
+            <div class="row mt-4">
                 <div class="col">
                     <input name="title" type="text" class="form-control" placeholder="Anime Title">
                 </div>
@@ -101,37 +154,48 @@
                         <option value="2019">2019</option>
                     </select>
                 </div>
-                <!-- <div class="col">
-                    <select name="season" class="form-control">
-                        <option value="">Season</option>
-                        <option value="f21">Fall 2021</option>
-                        <option value="su21">Summer 2021</option>
-                        <option value="sp21">Spring 2021</option>
-                        <option value="f20">Fall 2020</option>
-                        <option value="su20">Summer 2020</option>
-                        <option value="sp20">Spring 2020</option>
-                        <option value="f19">Fall 2019</option>
-                        <option value="su19">Summer 2019</option>
-                        <option value="sp19">Spring 2019</option>
-                    </select>
-                </div> -->
                 <div class="col">
                     <select name="genre" class="form-control">
                         <option value="">Genre</option>
                         <option value="Romance">Romance</option>
                         <option value="Action">Action</option>
                         <option value="Comedy">Comedy</option>
-                        <option value="SlifeofLife">Slice of Life</option>
+                        <option value="Slife-of-Life">Slice of Life</option>
                     </select>
                 </div>
                 <div class="col">
-                    <input name="search btn" type="button" class="btn btn-dark form-control" style="background-color: rgba(232,84,74,255);" value="Submit">
+                    <input name="search" type="submit" class="btn btn-dark form-control" style="background-color: rgba(232,84,74,255);" value="Submit">
                 </div>
             </div>
         </form>
     </div>
 
+    <div class='container bg-light overflow-auto'>
+        <h3 class="text-center mt-4">Anime</h3>
+			<div class='row justify-content-center'>
+			<?php
 
+				if ($results) {
+					//outputs all results passed
+					foreach ($results as $row) {
+                        echo '<div class="card text-center ms-3 mt-3" style="width: 25rem;">';
+                        echo "<img src='".$row['image_url']."' class='card-img-top mx-auto mt-3' alt='movie image' style='width: 200px;'>";
+                        echo '<div class="card-body">';
+                        echo '<h5 class="card-title">'.$row['title'].'</h5>';
+                        echo '<h6 class="card-subtitle mb-2 text-muted">'.$row['year'].'</h6>';
+                        echo '<p class="card-text">'.$row['description'].'</p>';
+                        echo '<a href="#" class="btn btn-dark" style="background-color: rgba(232,84,74,255);">View Anime</a>';
+                        echo '</div>';
+                        echo '</div>';
+					}
+				}
+
+				else {
+					echo "<p class='text-danger'>No results.</p>";
+				}
+			?>
+			</div>
+		</div>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
@@ -141,4 +205,8 @@
     </script>
 </body>
 
+    <?php
+		//closes db connection
+		$db = null;
+	?>
 </html>
