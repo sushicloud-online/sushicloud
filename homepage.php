@@ -124,10 +124,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">   
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">My Lists</a>
+                        <a class="nav-link" aria-current="page" href="./mylist.php">My Lists</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Settings</a>
+                        <a class="nav-link" href="">Settings</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./user_logout.php">Logout</a>
