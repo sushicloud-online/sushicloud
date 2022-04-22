@@ -24,5 +24,9 @@ Online repository of sushicloud, a project for CSIT 337 at Montclair State Unive
 - [ ] Finish creating all user facing files
 - [ ] Individual anime pages will only be one fluid file
   - [ ] it will query for the requested anime resources and spew out it's data
-- [ ] Admin must ... remove user, add new anime, delete an anime, modify 
+- [ ] Admin must ... 
+  - [ ] remove user
+  - [ ] add new anime 
+  - [ ] delete an anime
+  - [ ] modify anime & users
 anime
