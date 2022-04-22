@@ -29,4 +29,3 @@ Online repository of sushicloud, a project for CSIT 337 at Montclair State Unive
   - [ ] add new anime 
   - [ ] delete an anime
   - [ ] modify anime & users
-anime
