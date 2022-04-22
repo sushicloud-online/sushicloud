@@ -80,11 +80,7 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
     <div class="container-fluid bg-light mt-3">
         <div class="text-center mx-auto mt-5">
             <img src="../assets/sushicloud.png" width="300px" height="100px" alt="sushicloud">
-        </div>
-        <div class="text-center p-2">
-            <p class="lead">
-            <h1>Admin Account Details</h1>
-            </p>
+            <h2 class="mt-2">Insert New Anime</h2>
         </div>
     </div>
     <section class="vh-200">
@@ -100,7 +96,6 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
                                 <div class="col-md-6 mb-1">
                                     <div class="form-group">
                                         <h5>Username:</h5>
-                                        <?php echo $user; ?>
                                     </div>
                                 </div>
                             </div>
@@ -110,7 +105,6 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
                                 <div class="col-md-12 mb-2">
                                     <div class="form-group">
                                         <h5>Email:</h5>
-                                        <?php echo $email; ?>
                                     </div>
                                 </div>
                             </div>
@@ -120,7 +114,6 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
                                 <div class="col-md-12 mb-2">
                                     <div class="form-group">
                                         <h5>First Name:</h5>
-                                        <?php echo $Fname; ?>
                                     </div>
                                 </div>
                             </div>
@@ -130,7 +123,6 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
                                 <div class="col-md-12 mb-2">
                                     <div class="form-group">
                                         <h5>Last Name:</h5>
-                                        <?php echo $Lname; ?>
                                     </div>
                                 </div>
                             </div>
