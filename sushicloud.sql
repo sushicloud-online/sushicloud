@@ -12,7 +12,7 @@ CREATE TABLE `anime` (
   `year` char(4),
   `season` varchar(50),
   `genre` varchar(50),
-  `description` varchar(255),
+  `description` varchar(1000),
   `image_url` varchar(50)
 )
 

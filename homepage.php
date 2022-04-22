@@ -179,7 +179,7 @@
 					//outputs all results passed
 					foreach ($results as $row) {
                         echo '<div class="card text-center ms-3 mt-3" style="width: 25rem;">';
-                        echo "<img src='".$row['image_url']."' class='card-img-top mx-auto mt-3' alt='movie image' style='width: 200px;'>";
+                        echo "<img src='".$row['image_url']."' class='card-img-top mx-auto mt-3' alt='anime image' style='width: 200px;'>";
                         echo '<div class="card-body">';
                         echo '<h5 class="card-title">'.$row['title'].'</h5>';
                         echo '<h6 class="card-subtitle mb-2 text-muted">'.$row['year'].'</h6>';
@@ -191,7 +191,7 @@
 				}
 
 				else {
-					echo "<p class='text-danger'>No results.</p>";
+					echo "<h6 class='text-center mt-5' style='color: rgba(232,84,74,255);'>No results.</h6>";
 				}
 			?>
 			</div>
