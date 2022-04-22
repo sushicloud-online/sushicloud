@@ -80,7 +80,7 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
     <div class="container-fluid bg-light mt-3">
         <div class="text-center mx-auto mt-5">
             <img src="../assets/sushicloud.png" width="300px" height="100px" alt="sushicloud">
-            <h2 class="mt-2">Admin Settings</h2>
+            <h2 class="mt-2">Admin Account Details</h2>
         </div>
     </div>
     <section class="vh-200">
