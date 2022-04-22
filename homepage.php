@@ -124,7 +124,7 @@ $results = $query->fetchAll();
                         <a class="nav-link" aria-current="page" href="./mylist.php">My Lists</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Settings</a>
+                        <a class="nav-link" href="./user_settings.php">Settings</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./user_logout.php">Logout</a>
