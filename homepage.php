@@ -7,13 +7,11 @@
 
     $notice = '';
 
-    //checks if user is logged in
+    //checks if user is logged in, if the user is not logged redirect to login page
     if (!isset($_SESSION['logged_in'])) {
-        //if user is not logged in, redirects to login page
         $_SESSION['need_log'] = true;
         header('Location: login.php');
-
-        //closes db connection
+        //close db connection
         $db = null;
         exit();
     }
@@ -72,7 +70,7 @@
 		//adds genre to query if genre was selected
 		if (!empty($_POST['genre'])) {
 			$genre = $_POST['genre'];
-			$anime_search = $anime_search.' genre = :genre';
+			$anime_search = $anime_search.' genre like :genre';
 		}
 	}
 
