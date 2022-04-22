@@ -24,7 +24,6 @@ CREATE TABLE `admin` (
   `last_name` varchar(50) DEFAULT NULL
 ) 
 
-
 /*TODO: INSERT ANIME INTO DATABASE*/
 
 INSERT INTO `anime` (`title`, `year`, `season`, `genre`, `description`, `image_url`) VALUES 
