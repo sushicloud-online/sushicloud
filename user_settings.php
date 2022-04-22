@@ -70,7 +70,7 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
                         <a class="nav-link" href="admin_settings.php">Settings</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../user_logout.php">Logout</a>
+                        <a class="nav-link" href="./user_logout.php">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -81,6 +81,11 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
         <div class="text-center mx-auto mt-5">
             <img src="./assets/sushicloud.png" width="300px" height="100px" alt="sushicloud">
             <h2 class="mt-2">User Account Details</h2>
+            <div class="row offset mt-3">
+                <center>
+                    <a href="#" class="btn btn-dark btn active" role="button">Update Profile</a>
+                </center>
+            </div>
         </div>
     </div>
     <section class="vh-200">
@@ -127,8 +132,8 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
                                 </div>
                             </div>
 
-                             <!-- Row #2 -->
-                             <div class="row">
+                            <!-- Row #2 -->
+                            <div class="row">
                                 <div class="col-md-12 mb-2">
                                     <div class="form-group">
                                         <h5>Address:</h5>
