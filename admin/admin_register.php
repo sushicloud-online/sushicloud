@@ -39,7 +39,7 @@
 
         <form class="form-row align-items-center mt-5" action="./background_scripts/admin_registration_validation.php" method="post">
             <div class="row justify-content-center">
-                <label class="control-label col-sm-2" for="username">Username:</label>
+                <label class="control-label col-sm-1" for="username">Username:</label>
 
                 <div class="col-sm-3">
                     <input type="text" class="form-control" id="username" name="username" required>
@@ -47,7 +47,7 @@
             </div>
 
             <div class="row justify-content-center mt-3">
-                <label class="control-label col-sm-2" for="password">Password:</label>
+                <label class="control-label col-sm-1" for="password">Password:</label>
 
                 <div class="col-sm-3">
                     <input type="password" class="form-control" id="password" name="password" required>
@@ -55,7 +55,7 @@
             </div>
 
             <div class="row justify-content-center mt-3">
-                <label class="control-label col-sm-2" for="password">Email:</label>
+                <label class="control-label col-sm-1" for="password">Email:</label>
 
                 <div class="col-sm-3">
                     <input type="email" class="form-control" id="email" name="email" required>
@@ -63,7 +63,7 @@
             </div>
 
             <div class="row justify-content-center mt-3">
-                <label class="control-label col-sm-2" for="fname">First Name:</label>
+                <label class="control-label col-sm-1" for="fname">First Name:</label>
 
                 <div class="col-sm-3">
                     <input type="text" class="form-control" id="fname" name="fname" required>
@@ -71,7 +71,7 @@
             </div>
 
             <div class="row justify-content-center mt-3">
-                <label class="control-label col-sm-2" for="lname">Last Name:</label>
+                <label class="control-label col-sm-1" for="lname">Last Name:</label>
 
                 <div class="col-sm-3">
                     <input type="text" class="form-control" id="lname" name="lname" required>

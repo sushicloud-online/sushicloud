@@ -29,18 +29,18 @@
 
         <form class="form-row align-items-center mt-5" action="./background_scripts/login_validation.php" method="post">
             <div class="row justify-content-center">
-                <label class="control-label col-sm-2" for="username">Username:</label>
+                <label class="control-label col-sm-1" for="username">Username:</label>
 
                 <div class="col-sm-3">
-                    <input type="text" class="form-control" id="username" placeholder="Enter Username" name="username" required>
+                    <input type="text" class="form-control" id="username" name="username" required>
                 </div>
             </div>
 
             <div class="row justify-content-center mt-3">
-                <label class="control-label col-sm-2" for="password">Password:</label>
+                <label class="control-label col-sm-1" for="password">Password:</label>
 
                 <div class="col-sm-3">
-                    <input type="password" class="form-control" id="password" placeholder="Enter Password" name="password" required>
+                    <input type="password" class="form-control" id="password" name="password" required>
                 </div>
             </div>
 

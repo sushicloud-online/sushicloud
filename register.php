@@ -32,7 +32,7 @@
 
         <form class="form-row align-items-center mt-5" action="./background_scripts/registration_validation.php" method="post">
             <div class="row justify-content-center">
-                <label class="control-label col-sm-2" for="username">Username:</label>
+                <label class="control-label col-sm-1" for="username">Username:</label>
 
                 <div class="col-sm-3">
                     <input type="text" class="form-control" id="username" name="username"
@@ -41,7 +41,7 @@
             </div>
 
             <div class="row justify-content-center mt-3">
-                <label class="control-label col-sm-2" for="password">Password:</label>
+                <label class="control-label col-sm-1" for="password">Password:</label>
 
                 <div class="col-sm-3">
                     <input type="password" class="form-control" id="password" name="password"
@@ -50,7 +50,7 @@
             </div>
 
             <div class="row justify-content-center mt-3">
-                <label class="control-label col-sm-2" for="password">Email:</label>
+                <label class="control-label col-sm-1" for="password">Email:</label>
 
                 <div class="col-sm-3">
                     <input type="email" class="form-control" id="email" name="email"
@@ -59,7 +59,7 @@
             </div>
 
             <div class="row justify-content-center mt-3">
-                <label class="control-label col-sm-2" for="fname">First Name:</label>
+                <label class="control-label col-sm-1" for="fname">First Name:</label>
 
                 <div class="col-sm-3">
                     <input type="text" class="form-control" id="fname" name="fname"
@@ -68,7 +68,7 @@
             </div>
 
             <div class="row justify-content-center mt-3">
-                <label class="control-label col-sm-2" for="lname">Last Name:</label>
+                <label class="control-label col-sm-1" for="lname">Last Name:</label>
 
                 <div class="col-sm-3">
                     <input type="text" class="form-control" id="lname" name="lname"
@@ -77,7 +77,7 @@
             </div>
 
             <div class="row justify-content-center mt-3">
-                <label class="control-label col-sm-2" for="street_address">Street Address:</label>
+                <label class="control-label col-sm-1" for="street_address">Street Address:</label>
 
                 <div class="col-sm-3">
                     <input type="text" class="form-control" id="street_address" name="street_address"
@@ -86,7 +86,7 @@
             </div>
 
             <div class="row justify-content-center mt-3">
-                <label class="control-label col-sm-2" for="city">City:</label>
+                <label class="control-label col-sm-1" for="city">City:</label>
 
                 <div class="col-sm-3">
                     <input type="text" class="form-control" id="city" name="city"
@@ -95,7 +95,7 @@
             </div>
 
             <div class="row justify-content-center mt-3">
-                <label class="control-label col-sm-2" for="state">State:</label>
+                <label class="control-label col-sm-1" for="state">State:</label>
 
                 <div class="col-sm-3">
                         <select id="state" name="state" class="form-control" required>
@@ -155,7 +155,7 @@
             </div>
 
             <div class="row justify-content-center mt-3">
-                <label class="control-label col-sm-2" for="zip">Zip Code:</label>
+                <label class="control-label col-sm-1" for="zip">Zip Code:</label>
 
                 <div class="col-sm-3">
                     <input type="number" class="form-control" id="zip" name="zip"
