@@ -84,8 +84,8 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
             <h2 class="mt-2">Insert New Anime</h2>
         </div>
 
-        <form class="form-row align-items-center mt-5" action="#" method="post">
-            <div class="row">
+        <form class="form-row align-items-center mt-5" action="./background_scripts/insert_validation.php" method="post">
+            <div class="row justify-content-center">
                 <label class="control-label col-sm-2" for="title">Title:</label>
 
                 <div class="col-sm-3">
@@ -93,7 +93,7 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
                 </div>
             </div>
 
-            <div class="row mt-3">
+            <div class="row justify-content-center mt-3">
                 <label class="control-label col-sm-2" for="year">Year:</label>
 
                 <div class="col-sm-3">
@@ -101,7 +101,7 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
                 </div>
             </div>
 
-            <div class="row mt-3">
+            <div class="row justify-content-center mt-3">
                 <label class="control-label col-sm-2" for="Season">Season:</label>
 
                 <div class="col-sm-3">
@@ -114,7 +114,7 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
                 </div>
             </div>
 
-            <div class="row mt-3">
+            <div class="row justify-content-center mt-3">
                 <label class="control-label col-sm-2" for="genre">Genre:</label>
 
                 <div class="col-sm-3">
@@ -139,7 +139,7 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
                 </div>
             </div>
 
-            <div class="row mt-3">
+            <div class="row justify-content-center mt-3">
                 <label class="control-label col-sm-2" for="description">Description:</label>
 
                 <div class="col-sm-3">
@@ -147,7 +147,7 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
                 </div>
             </div>
 
-            <div class="row mt-3">
+            <div class="row justify-content-center mt-3">
                 <label class="control-label col-sm-2" for="image_url">Image URL:</label>
 
                 <div class="col-sm-3">
