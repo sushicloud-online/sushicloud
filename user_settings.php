@@ -1,6 +1,6 @@
 <?php
 //includes db connection
-require_once '../db_connect.php';
+require_once 'db_connect.php';
 
 //includes session info
 session_start();
@@ -63,14 +63,14 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="admin_homepage.php">sushicloud</a>
+            <a class="navbar-brand" href="./homepage.php">sushicloud</a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="admin_settings.php">Settings</a>
+                        <a class="nav-link" href="./user_settings.php">Settings</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../user_logout.php">Logout</a>
+                        <a class="nav-link" href="./user_logout.php">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -79,8 +79,13 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
 
     <div class="container-fluid bg-light mt-3">
         <div class="text-center mx-auto mt-5">
-            <img src="../assets/sushicloud.png" width="300px" height="100px" alt="sushicloud">
-            <h2 class="mt-2">Admin Account Details</h2>
+            <img src="./assets/sushicloud.png" width="300px" height="100px" alt="sushicloud">
+            <h2 class="mt-2">User Account Details</h2>
+            <div class="row offset mt-3">
+                <center>
+                    <a href="#" class="btn btn-dark btn active" role="button">Update Profile</a>
+                </center>
+            </div>
         </div>
     </div>
     <section class="vh-200">
@@ -123,6 +128,15 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
                                 <div class="col-md-12 mb-2">
                                     <div class="form-group">
                                         <h5>Last Name:</h5>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Row #2 -->
+                            <div class="row">
+                                <div class="col-md-12 mb-2">
+                                    <div class="form-group">
+                                        <h5>Address:</h5>
                                     </div>
                                 </div>
                             </div>

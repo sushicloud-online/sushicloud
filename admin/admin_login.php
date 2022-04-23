@@ -25,32 +25,33 @@
 
         <div class="text-center mx-auto mt-5">
             <img src="../assets/sushicloud.png" width="300px" height="100px" alt="sushicloud">
+            <h2 class="mt-2">Admin Login</h2>
         </div>
 
-        <form class="form-horizontal form-group mt-5" action="./background_scripts/admin_login_validation.php" method="post">
-            <div class="row">
-                <label class="control-label col-sm-2" for="username">Username:</label>
+        <form class="form-row align-items-center mt-5" action="./background_scripts/admin_login_validation.php" method="post">
+            <div class="row justify-content-center">
+                <label class="control-label col-sm-1" for="username">Username:</label>
 
-                <div class="col-sm-8">
-                    <input type="text" class="form-control" id="username" placeholder="Enter Username" name="username"
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="username" name="username"
                         required>
                 </div>
             </div>
 
-            <div class="row mt-3">
-                <label class="control-label col-sm-2" for="password">Password:</label>
+            <div class="row justify-content-center mt-3">
+                <label class="control-label col-sm-1" for="password">Password:</label>
 
-                <div class="col-sm-8">
-                    <input type="password" class="form-control" id="password" placeholder="Enter Password" name="password"
+                <div class="col-sm-3">
+                    <input type="password" class="form-control" id="password" name="password"
                         required>
                 </div>
             </div>
 
-            <div class="row">
-                <div class="offset-sm-2 col-sm-10 mt-3">
+            <div class="row offset mt-5">
+                <center>
                     <input type="submit" class="btn btn-dark" value="Login" name="login">
                     <input type="reset" class="btn btn-danger" value="Clear">
-                </div>
+                </center>
             </div>
         </form>
     </div>

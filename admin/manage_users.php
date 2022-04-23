@@ -43,6 +43,12 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
     unset($_SESSION['mi_err']);
 }
 
+//prepares and executes search statement
+$query = $db->prepare('select username, email, first_name, last_name, address from users');
+$query->execute();
+
+//gets all anime
+$results = $query->fetchAll();
 ?>
 
 <!doctype html>
@@ -81,16 +87,56 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
 
         <div class="text-center mx-auto mt-5">
             <img src="../assets/sushicloud.png" width="300px" height="100px" alt="sushicloud">
+            <h2 class="mt-2">Manage Users</h2>
         </div>
 
-        <div class="row offset mt-5">
+        <div class="row offset mt-3">
             <center>
-                <a href="#" class="btn btn-dark btn active" role="button">Add Employee</a>
-                <a href="#" class="btn btn-dark btn active" role="button">Edit User and Employee</a>
-            </center>   
+                <a href="admin_register.php" class="btn btn-dark btn active" role="button">Insert Employee</a>
+                <a href="#" class="btn btn-dark btn active" role="button">Edit Employee</a>
+            </center>
         </div>
 
     </div>
+    <div class="container py-5 h-50">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-12 col-lg-11 col-xl-13">
+                <div class="card shadow-2-strong card-manage" style="border-radius: 15px;">
+                    <div class="card-body p-4 p-md-5">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Username</th>
+                                    <th>Email</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Address</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <?php
+                            foreach ($results as $row) {
+                                echo "<form action='#' method='post'>
+                                    <td>" . $row['username'] . "</td>
+                                    <td>" . $row['email'] . "</td>
+                                    <td>" . $row['first_name'] . "</td>
+                                    <td>" . $row['last_name'] . "</td>
+                                    <td>" . $row['address'] . "</td>
+                                    <td>
+                                        <input type='hidden' name='username' value='" . $row['username'] . "'>
+                                        <input type='submit' value='Delete' class='btn btn-danger'>
+                                        </form>
+                                    </td>
+                                </tr>";
+                            }
+                            ?>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
 

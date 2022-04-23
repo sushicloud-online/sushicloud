@@ -86,7 +86,7 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
 
         <form class="form-row align-items-center mt-5" action="./background_scripts/insert_validation.php" method="post">
             <div class="row justify-content-center">
-                <label class="control-label col-sm-2" for="title">Title:</label>
+                <label class="control-label col-sm-1" for="title">Title:</label>
 
                 <div class="col-sm-3">
                     <input type="text" class="form-control" id="title" name="title" required>
@@ -94,7 +94,7 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
             </div>
 
             <div class="row justify-content-center mt-3">
-                <label class="control-label col-sm-2" for="year">Year:</label>
+                <label class="control-label col-sm-1" for="year">Year:</label>
 
                 <div class="col-sm-3">
                     <input type="text" class="form-control" id="year" name="year" required>
@@ -102,10 +102,11 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
             </div>
 
             <div class="row justify-content-center mt-3">
-                <label class="control-label col-sm-2" for="Season">Season:</label>
+                <label class="control-label col-sm-1" for="Season">Season:</label>
 
                 <div class="col-sm-3">
                     <select class="form-control" id="season" name="season" required>
+                        <option value=''>Select a Season</option>
                         <option value="Winter">Winter</option>
                         <option value="Spring">Spring</option>
                         <option value="Summer">Summer</option>
@@ -115,10 +116,11 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
             </div>
 
             <div class="row justify-content-center mt-3">
-                <label class="control-label col-sm-2" for="genre">Genre:</label>
+                <label class="control-label col-sm-1" for="genre">Genre:</label>
 
                 <div class="col-sm-3">
                     <select type="text" class="form-control" id="genre" name="genre" required>
+                        <option value=''>Select a Genre</option>
                         <option value="Action">Action</option>
                         <option value="Adventure">Adventure</option>
                         <option value="Comedy">Comedy</option>
@@ -140,7 +142,7 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
             </div>
 
             <div class="row justify-content-center mt-3">
-                <label class="control-label col-sm-2" for="description">Description:</label>
+                <label class="control-label col-sm-1" for="description">Description:</label>
 
                 <div class="col-sm-3">
                     <input type="text" class="form-control" id="description" name="description" required>
@@ -148,7 +150,7 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
             </div>
 
             <div class="row justify-content-center mt-3">
-                <label class="control-label col-sm-2" for="image_url">Image URL:</label>
+                <label class="control-label col-sm-1" for="image_url">Image URL:</label>
 
                 <div class="col-sm-3">
                     <input type="text" class="form-control" id="image_url" name="image_url" required>
