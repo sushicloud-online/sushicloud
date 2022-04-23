@@ -222,14 +222,17 @@ $results = $query->fetchAll();
                 //outputs all results passed
                 foreach ($results as $row) {
                     echo '<div class="card text-center ms-3 mt-3" style="width: 25rem;">';
-                    echo "<img src='" . $row['image_url'] . "' class='card-img-top mx-auto mt-3' alt='anime image' style='width: 200px;'>";
-                    echo '<div class="card-body">';
-                    echo '<h5 class="card-title">' . $row['title'] . '</h5>';
-                    echo '<h6 class="card-subtitle mb-2 text-muted">' . $row['year'] . '</h6>';
-                    echo '<p class="card-text">' . $row['description'] . '</p>';
-                    echo '<a href="#" class="btn btn-dark" style="background-color: rgba(232,84,74,255);">View Anime</a>';
-                    echo '</div>';
-                    echo '</div>';
+                        echo "<img src='".$row['image_url']."' class='card-img-top mx-auto mt-3' alt='anime image' style='width: 200px;'>";
+                        echo '<div class="card-body">';
+                        echo '<h5 class="card-title">'.$row['title'].'</h5>';
+                        echo '<h6 class="card-subtitle mb-2 text-muted">'.$row['year'].'</h6>';
+                        echo '<p class="card-text">'.$row['description'].'</p>';
+                        echo '<form action="view_anime.php" method="post">';
+                        echo '<input type ="hidden" name="year" value='.$row['year'].'>';
+                        echo "<input class='btn btn-dark' type='submit' value='View Anime' style='background-color: rgba(232,84,74,255);'>";
+                        echo '</form>';
+                        echo '</div>';
+                        echo '</div>';
                 }
             } else {
                 echo "<h6 class='text-center mt-5' style='color: rgba(232,84,74,255);'>No results.</h6>";
