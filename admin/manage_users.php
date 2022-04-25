@@ -90,13 +90,6 @@ $results = $query->fetchAll();
             <h2 class="mt-2">Manage Users</h2>
         </div>
 
-        <div class="row offset mt-3">
-            <center>
-                <a href="admin_register.php" class="btn btn-dark btn active" role="button">Insert Employee</a>
-                <a href="#" class="btn btn-dark btn active" role="button">Edit Employee</a>
-            </center>
-        </div>
-
     </div>
     <div class="container py-5 h-50">
         <div class="row justify-content-center align-items-center h-100">
@@ -125,6 +118,7 @@ $results = $query->fetchAll();
                                     <td>
                                         <input type='hidden' name='username' value='" . $row['username'] . "'>
                                         <input type='submit' value='Delete' class='btn btn-danger'>
+                                        <input type='submit' value='Edit' class='btn btn-danger'>
                                         </form>
                                     </td>
                                 </tr>";
