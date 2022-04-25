@@ -159,6 +159,13 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
                 </div>
             </div>
 
+            <div class="row justify-content-center mt-3">
+                <label class="control-label col-sm-1" for="image_url">Episodes:</label>
+
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="episodes" name="episodes" required>
+                </div>
+            </div>
 
             <div class="row offset mt-5">
                 <center>
