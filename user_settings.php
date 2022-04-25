@@ -43,6 +43,10 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
     unset($_SESSION['mi_err']);
 }
 
+/*
+    TODO: create query for getting user info, so something like SELECT * FROM user where username = $_SESSION['user']
+*/
+
 ?>
 
 <!doctype html>
