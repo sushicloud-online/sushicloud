@@ -228,7 +228,7 @@ $results = $query->fetchAll();
                         echo '<h6 class="card-subtitle mb-2 text-muted">'.$row['year'].'</h6>';
                         echo '<p class="card-text">'.$row['description'].'</p>';
                         echo '<form action="view_anime.php" method="post">';
-                        echo '<input type ="hidden" name="year" value='.$row['year'].'>';
+                        echo "<input type='hidden' name='title' value='".$row['title']."'>";
                         echo "<input class='btn btn-dark' type='submit' value='View Anime' style='background-color: rgba(232,84,74,255);'>";
                         echo '</form>';
                         echo '</div>';
