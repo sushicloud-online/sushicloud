@@ -44,7 +44,7 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
 }
 
 //prepares and executes search statement
-$query = $db->prepare('select title, year, season, genre, description, image_url from anime');
+$query = $db->prepare('select title, year, season, genre, description, image_url, episodes from anime');
 $query->execute();
 
 //gets all anime
@@ -117,6 +117,7 @@ $results = $query->fetchAll();
                                     <th>Genre</th>
                                     <th>Description</th>
                                     <th>Image_URL</th>
+                                    <th>Episodes</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -129,6 +130,7 @@ $results = $query->fetchAll();
                                     <td>" . $row['genre'] . "</td>
                                     <td>" . $row['description'] . "</td>
                                     <td>" . $row['image_url'] . "</td>
+                                    <td>" . $row['episodes'] . "</td>
                                     <td>
                                         <input type='hidden' name='title' value='" . $row['title'] . "'>
                                         <input type='submit' value='Delete' class='btn btn-danger'>
