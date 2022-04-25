@@ -14,6 +14,38 @@
 		exit();
 	}
 
+    $title = $_POST['title'];
+
+    // check if title was empty
+    if(empty($title)){
+        // if it was empty redirect to homepage
+        $_SESSION['mi_err'] = true;
+        header('Location: homepage.php');
+
+        $db = null;
+        exit();
+    }
+
+    //prepares query for anime title
+	$query = $db->prepare('SELECT * FROM anime WHERE title = :title');
+	$query->bindParam(':title', $title);
+
+	//gets query results
+	$query->execute();
+	$result = $query->fetch();
+
+    // if query empty then redirect
+    if(!$result){
+        $_SESSION['mi_err'] = true;
+        header('Location: homepage.php');
+    }
+    else {
+        $title = $result['title'];
+        $year = $result['year'];
+        $image_url = $result['image_url'];
+    }
+
+    $db = null;
 ?>
 
 <!doctype html>
@@ -52,8 +84,67 @@
         </div>
     </nav>
 
-    <div class="container text-center mx-auto">
-        <h2 class="mt-3">Anime Title goes here</h2>
+    <div class="container text-center mx-auto pt-3">
+        
+        <p>
+            <?php 
+                echo "<img src='".$image_url."' class='card mx-auto mt-3' alt='anime image' style='width: 200px;'>";
+            ?>
+        </p>
+
+        <h2> 
+            <?php 
+                echo "<u>".$title."</u>";
+            ?>
+        </h2>
+
+        <!-- wrap form around this div -->
+
+        <div class="row justify-content-center mt-3">
+                <label class="control-label col-sm-1 lead">Status:</label>
+
+                <div class="col-sm-1">
+                <select name="genre" class="form-control">
+                        <option value="">Status</option>
+                        <option value="CW">Currently Watching</option>
+                        <option value="Dropped">Dropped</option>
+                        <option value="OnHold">On Hold</option>
+                        <option value="Finished">Finished</option>
+                    </select>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-2">
+                <label class="control-label col-sm-1 lead">Episodes:</label>
+
+                <div class="col-sm-1">
+                <!--SELECT STATEMENT WITH FOR LOOP ITERATING THROUGH EP AMOUNT-->
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-2">
+                <label class="control-label col-sm-1 lead">Score:</label>
+
+                <div class="col-sm-1">
+                <select name="genre" class="form-control">
+                        <option value="">Score</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10 🏆</option>
+                    </select>
+            </div>
+        </div>
+
+
+
+        
     </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
