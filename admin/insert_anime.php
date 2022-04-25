@@ -97,9 +97,11 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
                 <label class="control-label col-sm-1" for="year">Year:</label>
 
                 <div class="col-sm-3">
-                    <input type="text" class="form-control" id="year" name="year" required>
+                    <input type="text" class="form-control" id="year" name="year" pattern="{0-9}4" required>
                 </div>
             </div>
+
+            <!-- TODO: need to fix incorrect pattern redirect -->
 
             <div class="row justify-content-center mt-3">
                 <label class="control-label col-sm-1" for="Season">Season:</label>
