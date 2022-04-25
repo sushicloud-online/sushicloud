@@ -99,7 +99,6 @@ $results = $query->fetchAll();
         <div class="row offset mt-3">
             <center>
                 <a href="insert_anime.php" class="btn btn-dark btn active" role="button">Insert Anime</a>
-                <a href="#" class="btn btn-dark btn active" role="button">Edit Anime</a>
             </center>
         </div>
 
@@ -131,8 +130,9 @@ $results = $query->fetchAll();
                                     <td>" . $row['description'] . "</td>
                                     <td>" . $row['image_url'] . "</td>
                                     <td>
-                                            <input type='hidden' name='title' value='" . $row['title'] . "'>
-                                            <input type='submit' value='Delete' class='btn btn-danger'>
+                                        <input type='hidden' name='title' value='" . $row['title'] . "'>
+                                        <input type='submit' value='Delete' class='btn btn-danger'>
+                                        <input type='submit' value='Edit' class='btn btn-danger mt-2 ps-3 pe-3'>
                                         </form>
                                     </td>
                                 </tr>";
