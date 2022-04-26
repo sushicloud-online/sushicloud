@@ -47,6 +47,12 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
     TODO: create query for getting admin info, so something like SELECT * FROM admin where admin_username = $_SESSION['user']
 */
 
+//prepares and executes search statement
+$query = $db->prepare('select username, email, first_name, last_name from admin');
+$query->execute();
+
+//gets all anime
+$results = $query->fetchAll();
 ?>
 
 <!doctype html>
@@ -94,42 +100,14 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
                 <div class="col-12 col-lg-9 col-xl-7">
                     <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                         <div class="card-body p-4 p-md-5">
-
-                            <!-- Row #2 -->
-                            <div class="row">
-                                <div class="col-md-6 mb-1">
-                                    <div class="form-group">
-                                        <h5>Username:</h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Row #2 -->
-                            <div class="row">
-                                <div class="col-md-12 mb-2">
-                                    <div class="form-group">
-                                        <h5>Email:</h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Row #2 -->
-                            <div class="row">
-                                <div class="col-md-12 mb-2">
-                                    <div class="form-group">
-                                        <h5>First Name:</h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Row #2 -->
-                            <div class="row">
-                                <div class="col-md-12 mb-2">
-                                    <div class="form-group">
-                                        <h5>Last Name:</h5>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php
+                            foreach ($results as $row) {
+                                echo '<h5>Username: ' . $row['username'] . '</h5>';
+                                echo '<h5>Email: ' . $row['email'] . '</h5>';
+                                echo '<h5>First Name: ' . $row['first_name'] . '</h5>';
+                                echo '<h5>Last Name: ' . $row['last_name'] . '</h5>';
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
