@@ -47,6 +47,12 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
     TODO: create query for getting user info, so something like SELECT * FROM user where username = $_SESSION['user']
 */
 
+//prepares and executes search statement
+$query = $db->prepare('select username, email, first_name, last_name, address from users');
+$query->execute();
+
+//gets all anime
+$results = $query->fetchAll();
 ?>
 
 <!doctype html>
@@ -87,8 +93,42 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
             <h2 class="mt-2">User Account Details</h2>
             <div class="row offset mt-3">
                 <center>
-                    <a href="#" class="btn btn-dark btn active" role="button">Update Profile</a>
+                    <button type="button" class="btn btn-dark btn active" data-toggle="modal" data-target="#editModal">
+                        Edit Profile
+                    </button>
                 </center>
+
+                <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editModalLabel">Edit Profile</h5>
+                                <!-- close button -->
+                                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button> -->
+                            </div>
+                            <div class="modal-body">
+                                <!-- <form class="form-row align-items-center" action="#" method="post">
+                                    <fieldset disabled>
+                                        <div class="form-group">
+                                            <label for="disabledTextInput" class="col-form-label">Username:</label>
+                                            <input type="text" class="form-control" id="username" placeholder="#">
+                                        </div>
+                                    </fieldset>
+                                    <div class="form-group">
+                                        <label for="password" class="col-form-label">Password:</label>
+                                        <input type="text" class="form-control" id="username">
+                                    </div>
+                                </form> -->
+                            </div>
+                            <div class="center modal-footer">
+                                <input type="submit" class="btn btn-dark" value="Insert">
+                                <input type="reset" class="btn btn-danger" value="Clear">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -99,51 +139,15 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
                 <div class="col-12 col-lg-9 col-xl-7">
                     <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                         <div class="card-body p-4 p-md-5">
-
-                            <!-- Row #2 -->
-                            <div class="row">
-                                <div class="col-md-6 mb-1">
-                                    <div class="form-group">
-                                        <h5>Username:</h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Row #2 -->
-                            <div class="row">
-                                <div class="col-md-12 mb-2">
-                                    <div class="form-group">
-                                        <h5>Email:</h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Row #2 -->
-                            <div class="row">
-                                <div class="col-md-12 mb-2">
-                                    <div class="form-group">
-                                        <h5>First Name:</h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Row #2 -->
-                            <div class="row">
-                                <div class="col-md-12 mb-2">
-                                    <div class="form-group">
-                                        <h5>Last Name:</h5>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Row #2 -->
-                            <div class="row">
-                                <div class="col-md-12 mb-2">
-                                    <div class="form-group">
-                                        <h5>Address:</h5>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php
+                                foreach ($results as $row) {
+                                    echo '<h5>Username: ' . $row['username'] . '</h5>';
+                                    echo '<h5>Email: ' . $row['email'] . '</h5>';
+                                    echo '<h5>First Name: ' . $row['first_name'] . '</h5>';
+                                    echo '<h5>Last Name: ' . $row['last_name'] . '</h5>';
+                                    echo '<h5>Address: ' . $row['address'] . '</h5>';
+                                }
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -154,8 +158,9 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 </body>
 
 </html>
