@@ -22,15 +22,6 @@ if (empty($title)) {
     $_SESSION['mi_err'] = true;
     header('Location: homepage.php');
 
-    $episodes = $_POST['episodes'];
-
-    $episodes_query = $db->prepare('SELECT * FROM anime WHERE episodes = :episodes');
-    $episodes_query->bindParam(':episodes', $episodes);
-
-    //gets query results
-    $episodes_query->execute();
-    $result_episodes = $episodes_query->fetch();
-
     $db = null;
     exit();
 }
@@ -91,7 +82,7 @@ $db = null;
         </div>
     </nav>
     <div class="text-center mx-auto mt-5">
-        <img src="./assets/sushicloud.png" width="300px" height="100px" alt="sushicloud">
+        <!-- <img src="./assets/sushicloud.png" width="300px" height="100px" alt="sushicloud"> -->
         <h2>
             <?php
             echo "<u>" . $title . "</u>";
@@ -124,24 +115,15 @@ $db = null;
         </div>
 
         <div class="row justify-content-center mt-2">
-<<<<<<< HEAD
-                <label class="control-label col-sm-1 lead">Episodes:</label>
+                <!-- <label class="control-label col-sm-1 lead">Episodes:</label>
 
                 <div class="col-sm-1">
                 <!--SELECT STATEMENT WITH FOR LOOP ITERATING THROUGH EP AMOUNT-->
-                <?php 
-                    
-                    // for($i = 0; $i < $result_episodes; $i++){
-                    //     echo "1";
-                    // }
-                    echo $result_episodes;
-                ?>
-=======
+               
             <label class="control-label col-sm-1 lead">Episodes:</label>
             <!-- can fix number placement later? -->
             <div class="col-sm-1"> 
                 <?php echo "<h5>" . $episodes . "</h5>"; ?> 
->>>>>>> 7e6b5bd3613cdb4ada1fcd9c5fbe0a474ab977f3
             </div>
         </div>
 
