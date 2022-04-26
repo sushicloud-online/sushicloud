@@ -6,6 +6,7 @@ require_once 'db_connect.php';
 session_start();
 
 $message = '';
+$_SESSION['invalid_input'] = false;
 
     //checks if user is logged in, if the user is not logged redirect to login page
     if (!isset($_SESSION['logged_in'])) {

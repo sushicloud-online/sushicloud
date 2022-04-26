@@ -16,86 +16,25 @@
         exit();
     }
 
-    //informs the user if they have successfully registered
-    else if (isset($_SESSION['reg_success']) && $_SESSION['reg_success'] == true) {
-        $notice = "<p class='text-success'>You have successfully registered!</p>";
+    //prepares query for getting password
+	$query = $db->prepare('SELECT * FROM list WHERE username = :user');
+	$query->bindParam(':user', $_SESSION['user']);
 
-        unset($_SESSION['reg_success']);
-    }
-
-    //informs the user if they are already logged in
-    else if (isset($_SESSION['already_li']) && $_SESSION['already_li'] == true) {
-        $notice = "<p class='text-danger'>You are already logged in.</p>";
-
-        unset($_SESSION['already_li']);
-    }
-
-    //informs the user they have newly logged in
-    else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
-        $notice = "<p class='text-success'>You are now logged in!</p>";
-
-        unset($_SESSION['new_log']);
-    }
-
-    else if (isset($_SESSION['mi_err']) && $_SESSION['mi_err'] == true) {
-        $notice = "<p class='text-danger'>An error has occurred. Please try again.</p>";
-
-        unset($_SESSION['mi_err']);
-    }
-
-    $anime_search = 'SELECT title, year, description, image_url from anime';
-
-    // checking if search terms were inputted
-    if (!empty($_POST['title']) || !empty($_POST['year']) || !empty($_POST['genre'])) {
-		$anime_search = $anime_search.' where';
-
-		//adds title to query if title was input
-		if (!empty($_POST['title'])) {
-			$title = trim($_POST['title']);
-			$anime_search = $anime_search.' title like :title';
-
-			if (!empty($_POST['year']) || !empty($_POST['genre']))
-				$anime_search = $anime_search.' or';
-		}
-
-		//adds year to query if genre was selected
-		if (!empty($_POST['year'])) {
-			$year = $_POST['year'];
-			$anime_search = $anime_search.' year like :year';
-
-			if (!empty($_POST['genre']))
-				$anime_search = $anime_search.' or';
-		}
-
-		//adds genre to query if genre was selected
-		if (!empty($_POST['genre'])) {
-			$genre = $_POST['genre'];
-			$anime_search = $anime_search.' genre like :genre';
-		}
-	}
-
-    //prepares query
-	$query = $db->prepare($anime_search);
-
-	//binds title parameter if exists
-	if (!empty($title)) {
-		$title = '%'.$title.'%';
-		$query->bindParam(':title', $title);
-	}
-
-    //binds rating parameter if exists
-	if (!empty($year))
-        $query->bindParam(':year', $year);
-
-	//binds genre parameter if exists
-	if (!empty($genre)) {
-		$genre = '%'.$genre.'%';
-		$query->bindParam(':genre', $genre);
-    }
-
-	//runs query and gets results
+	//gets password from database
 	$query->execute();
-	$results = $query->fetchAll();
+	$result = $query->fetch();
+    $num_results = $query->fetch();
+    // print_r($result);
+
+    // if ($result) {
+    //     //outputs all results passed
+    //     foreach ($result as $row) {
+    //         echo $row['username'];
+    //     }
+        
+    // } else {
+    //     echo "<h6 class='text-center mt-5' style='color: rgba(232,84,74,255);'>No results.</h6>";
+    // }
 
 ?>
 
@@ -112,10 +51,16 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="./style.css">
     <title>sushicloud</title>
+
 </head>
 
 <body class="bg-light">
-
+    <style>
+        .table-hover tbody tr:hover td,
+        .table-hover tbody tr:hover th {
+            background-color: lightsalmon;
+        }
+    </style>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="./homepage.php">sushicloud</a>
@@ -137,6 +82,143 @@
 
     <div class="container text-center mx-auto">
         <h2 class="mt-3">My Lists</h2>
+    </div>
+
+    
+
+    <div class="container py-5 h-50">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-12 col-lg-13 col-xl-13">
+                <div class="card shadow-2-strong card-manage" style="border-radius: 15px;">
+                    <div class="card-body p-4 p-md-5">
+                        <table class="table table-hover">
+                            <h3 class="text-center"><u>Anime Stats</u></h3>
+                            <thead>
+                                <tr>
+                                    <th>Watching</th>
+                                    <th>Finished</th>
+                                    <th>On Hold</th>
+                                    <th>Dropped</th>
+                                    <th>Plan to Watch</th>
+                                </tr>
+                            </thead>
+                            <td>
+                                <?php 
+                                    // displays amount of Currently Watching shows
+                                    $query = $db->prepare('SELECT * FROM list WHERE status = :status AND username = :user');
+                                    $var = "Currently Watching";
+                                    $query->bindParam(':status', $var);
+                                    $query->bindParam(':user', $_SESSION['user']);
+                                
+                                    $query->execute();
+                                    $result = $query->fetch();
+                                    
+                                    $count = $query->rowCount();
+                                    $count_cw = $count;
+                                    echo $count_cw;
+                                ?>
+                            </td>
+                            <td>
+                                <?php
+                                    // displays amount of Finished shows for user
+                                    $query = $db->prepare('SELECT * FROM list WHERE status = :status AND username = :user');
+                                    $var = "Finished";
+                                    $query->bindParam(':status', $var);
+                                    $query->bindParam(':user', $_SESSION['user']);
+                                
+                                    $query->execute();
+                                    $result = $query->fetch();
+                                    
+                                    $count = $query->rowCount();
+                                    $count_finished = $count; 
+                                    echo $count_finished;
+                                ?>
+                            </td>
+                            <td>
+                                <?php 
+                                    // displays amount of On Hold shows for user
+                                    $query = $db->prepare('SELECT * FROM list WHERE status = :status AND username = :user');
+                                    $var = "On Hold";
+                                    $query->bindParam(':status', $var);
+                                    $query->bindParam(':user', $_SESSION['user']);
+                                
+                                    $query->execute();
+                                    $result = $query->fetch();
+                                    
+                                    $count = $query->rowCount();
+                                    $count_onhold = $count;
+                                    echo $count_onhold;
+                                ?>
+                            </td>
+                            <td>
+                                <?php 
+                                    // displays amount of Dropped shows for user
+                                    $query = $db->prepare('SELECT * FROM list WHERE status = :status AND username = :user');
+                                    $var = "Dropped";
+                                    $query->bindParam(':status', $var);
+                                    $query->bindParam(':user', $_SESSION['user']);
+                                
+                                    $query->execute();
+                                    $result = $query->fetch();
+                                    
+                                    $count = $query->rowCount();
+                                    $count_dropped = $count;
+                                    echo $count_dropped;
+                                ?>
+                            </td>
+                            <td>
+                                <?php 
+                                    // displays amount of Plan to Watch shows for user
+                                    $query = $db->prepare('SELECT * FROM list WHERE status = :status AND username = :user');
+                                    $var = "Plan to Watch";
+                                    $query->bindParam(':status', $var);
+                                    $query->bindParam(':user', $_SESSION['user']);
+                                
+                                    $query->execute();
+                                    $result = $query->fetch();
+                                    
+                                    $count = $query->rowCount();
+                                    $count_ptw = $count;
+                                    echo $count_ptw;
+                                ?>
+                            </td>
+                        </table>
+                        <div class="piechart">
+                            <?php
+                                $dataPoints = array( 
+                                    array("label"=>"Watching", "y"=>$count_cw),
+                                    array("label"=>"Finished", "y"=>$count_finished),
+                                    array("label"=>"On Hold", "y"=>$count_onhold),
+                                    array("label"=>"Dropped", "y"=>$count_dropped),
+                                    array("label"=>"Plan to Watch", "y"=>$count_ptw),
+                                )
+                            ?>
+                            <script>
+                                    window.onload = function() {
+                                    
+                                    
+                                    var chart = new CanvasJS.Chart("chartContainer", {
+                                        animationEnabled: true,
+                                        
+                                        data: [{
+                                            type: "pie",
+                                            // yValueFormatString: "#,##0.00\"%\"",
+                                            indexLabel: "{label} ({y})",
+                                            dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+                                        }]
+                                    });
+                                    chart.render();
+                                    
+                                    }
+                            </script>
+                            <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+                            <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
