@@ -25,6 +25,14 @@ CREATE TABLE `admin` (
   `last_name` varchar(50) DEFAULT NULL
 ) 
 
+CREATE TABLE `list` (
+  `username` varchar(50) NOT NULL,
+  `title` varchar(50),
+  `status` varchar(50),
+  `episodes` int,
+  `score` int
+)
+
 /*TODO: INSERT ANIME INTO DATABASE*/
 
 INSERT INTO `anime` (`title`, `year`, `season`, `genre`, `description`, `image_url`, `episodes`) VALUES 
