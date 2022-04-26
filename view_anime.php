@@ -99,10 +99,9 @@ $db = null;
         </p>
 
         <!-- wrap form around this div -->
-
+    <form action="./background_scripts/add_to_list.php" method = "post">
         <div class="row justify-content-center mt-3">
             <label class="control-label col-sm-1 lead">Status:</label>
-
             <div class="col-sm-1">
                 <select name="genre" class="form-control">
                     <option value="">Status</option>
@@ -115,29 +114,21 @@ $db = null;
         </div>
 
         <div class="row justify-content-center mt-2">
-                <!-- <label class="control-label col-sm-1 lead">Episodes:</label>
-
-                <div class="col-sm-1">
-                <!--SELECT STATEMENT WITH FOR LOOP ITERATING THROUGH EP AMOUNT-->
-               
             <label class="control-label col-sm-1 lead">Episodes:</label>
-            <!-- can fix number placement later? -->
             <div class="col-sm-1"> 
                 <select name="ep-dropdown" class="form-control">
                     <option value="">Episodes</option>
-                <?php echo "<h5>" . $episodes . "</h5>"; ?> 
-                <?php 
-                    for($i = 1; $i <= $episodes; $i++){
-                        echo "<option value=".$i.">".$i."</option>";
-                    }
-                ?>
+                        <?php 
+                            for($i = 1; $i <= $episodes; $i++){
+                                echo "<option value=".$i.">".$i."</option>";
+                            }
+                        ?>
                 </select>
             </div>
         </div>
 
         <div class="row justify-content-center mt-2">
             <label class="control-label col-sm-1 lead">Score:</label>
-
             <div class="col-sm-1">
                 <select name="genre" class="form-control">
                     <option value="">Score</option>
@@ -154,7 +145,14 @@ $db = null;
                 </select>
             </div>
         </div>
+        
+        <div class="row justify-content-center mt-2">
+            <div class="col-sm-2">
+            <input type="submit" value="Add to my list" class="btn btn-dark">
+            </div>
+        </div>
 
+        </form>
     </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
