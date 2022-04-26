@@ -207,7 +207,7 @@ $results = $query->fetchAll();
                     </select>
                 </div>
                 <div class="col">
-                    <input name="search" type="submit" class="btn btn-dark form-control" style="background-color: rgba(232,84,74,255);" value="Submit">
+                    <input name="search" type="submit" class="btn btn-dark border-light form-control" style="background-color: rgba(232,84,74,255);" value="Submit">
                 </div>
             </div>
         </form>
@@ -229,7 +229,7 @@ $results = $query->fetchAll();
                         echo '<p class="card-text text-truncate">'.$row['description'].'</p>';
                         echo '<form action="view_anime.php" method="post">';
                         echo "<input type='hidden' name='title' value='".$row['title']."'>";
-                        echo "<input class='btn btn-dark' type='submit' value='View Anime' style='background-color: rgba(232,84,74,255);'>";
+                        echo "<input class='btn btn-dark border-light' type='submit' value='View Anime' style='background-color: rgba(232,84,74,255);'>";
                         echo '</form>';
                         echo '</div>';
                         echo '</div>';

@@ -148,7 +148,7 @@ $db = null;
         
         <div class="row justify-content-center mt-2">
             <div class="col-sm-2">
-            <input type="submit" value="Add to my list" class="btn btn-dark">
+            <input type="submit" value="Add to my list" class="btn btn-dark border-light" style="background-color: rgba(232,84,74,255);">
             </div>
         </div>
 
