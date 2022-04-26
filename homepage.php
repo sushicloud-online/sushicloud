@@ -2,11 +2,14 @@
 //includes db connection
 require_once 'db_connect.php';
 
+
 //includes session info
 session_start();
 
-$message = '';
+// initial session values for catching errors in following if statements
 $_SESSION['invalid_input'] = false;
+
+$message = '';
 
     //checks if user is logged in, if the user is not logged redirect to login page
     if (!isset($_SESSION['logged_in'])) {
