@@ -123,7 +123,15 @@ $db = null;
             <label class="control-label col-sm-1 lead">Episodes:</label>
             <!-- can fix number placement later? -->
             <div class="col-sm-1"> 
+                <select name="ep-dropdown" class="form-control">
+                    <option value="">Episodes</option>
                 <?php echo "<h5>" . $episodes . "</h5>"; ?> 
+                <?php 
+                    for($i = 1; $i <= $episodes; $i++){
+                        echo "<option value=".$i.">".$i."</option>";
+                    }
+                ?>
+                </select>
             </div>
         </div>
 
