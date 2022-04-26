@@ -45,6 +45,15 @@
         $image_url = $result['image_url'];
     }
 
+    $episodes = $_POST['episodes'];
+
+    $episodes_query = $db->prepare('SELECT * FROM anime WHERE episodes = :episodes');
+    $episodes_query->bindParam(':episodes', $episodes);
+
+    //gets query results
+    $episodes_query->execute();
+    $result_episodes = $episodes_query->fetch();
+
     $db = null;
 ?>
 
@@ -64,7 +73,6 @@
 </head>
 
 <body class="bg-light">
-
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="./homepage.php">sushicloud</a>
@@ -119,6 +127,13 @@
 
                 <div class="col-sm-1">
                 <!--SELECT STATEMENT WITH FOR LOOP ITERATING THROUGH EP AMOUNT-->
+                <?php 
+                    
+                    // for($i = 0; $i < $result_episodes; $i++){
+                    //     echo "1";
+                    // }
+                    echo $result_episodes;
+                ?>
             </div>
         </div>
 

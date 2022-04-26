@@ -229,6 +229,7 @@ $results = $query->fetchAll();
                         echo '<p class="card-text">'.$row['description'].'</p>';
                         echo '<form action="view_anime.php" method="post">';
                         echo "<input type='hidden' name='title' value='".$row['title']."'>";
+                        echo "<input type='hidden' name='episodes' value='".$row['episodes']."'>";
                         echo "<input class='btn btn-dark' type='submit' value='View Anime' style='background-color: rgba(232,84,74,255);'>";
                         echo '</form>';
                         echo '</div>';
