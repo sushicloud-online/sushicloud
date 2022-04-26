@@ -2,12 +2,8 @@
 //includes db connection
 require_once 'db_connect.php';
 
-
 //includes session info
 session_start();
-
-// initial session values for catching errors in following if statements
-$_SESSION['invalid_input'] = false;
 
 $message = '';
 
