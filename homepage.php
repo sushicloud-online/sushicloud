@@ -5,7 +5,7 @@ require_once 'db_connect.php';
 //includes session info
 session_start();
 
-$notice = '';
+$message = '';
 
     //checks if user is logged in, if the user is not logged redirect to login page
     if (!isset($_SESSION['logged_in'])) {
@@ -14,6 +14,10 @@ $notice = '';
         //close db connection
         $db = null;
         exit();
+    }
+    else if ($_SESSION['invalid_input'] == true) {
+        $message = "invalid anime selection input";
+        $_SESSION['invalid_input'] = null;
     }
 
 //informs the user if they have successfully registered
@@ -179,6 +183,11 @@ $results = $query->fetchAll();
     <div class="container">
 
         <div class="text-center mx-auto mt-5">
+            <h3 class="text-danger">
+                <?php
+                    echo $message;
+                ?>
+            </h3>
             <img src="./assets/sushicloud.png" width="300px" height="100px" alt="sushicloud">
             <h2 class="mt-3">Search for your favorite anime!</h2>
         </div>

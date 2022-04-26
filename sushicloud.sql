@@ -33,8 +33,6 @@ CREATE TABLE `list` (
   `score` int
 )
 
-/*TODO: INSERT ANIME INTO DATABASE*/
-
 INSERT INTO `anime` (`title`, `year`, `season`, `genre`, `description`, `image_url`, `episodes`) VALUES 
 ('Spy x Family', '2022', 'Spring', 'Action, Comedy', 'For the agent known as "Twilight," no order is too tall if it is for the sake of peace. Operating as Westalis master spy, Twilight works tirelessly to prevent extremists from sparking a war with neighboring country Ostania. For his latest mission, he must investigate Ostanian politician Donovan Desmond by infiltrating his sons school: the prestigious Eden Academy. Thus, the agent faces the most difficult task of his career: get married, have a child, and play family.', 'anime_assets/spyxfamily.jpg', 12),
 ('Demon Slayer', '2022', 'Winter', 'Action', "The devastation of the Mugen Train incident still weighs heavily on the members of the Demon Slayer Corps. Despite being given time to recover, life must go on, as the wicked never sleep: a vicious demon is terrorizing the alluring women of the Yoshiwara Entertainment District. The Sound Pillar, Tengen Uzui, and his three wives are on the case. However, when he soon loses contact with his spouses, Tengen fears the worst and enlists the help of Tanjirou Kamado, Zenitsu Agatsuma, and Inosuke Hashibira to infiltrate the district's most prominent houses and locate the depraved Upper Rank demon.", 'anime_assets/demon-slayer.jpg', 11),
