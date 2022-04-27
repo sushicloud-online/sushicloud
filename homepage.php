@@ -7,18 +7,18 @@ session_start();
 
 $message = '';
 
-    //checks if user is logged in, if the user is not logged redirect to login page
-    if (!isset($_SESSION['logged_in'])) {
-        $_SESSION['need_log'] = true;
-        header('Location: login.php');
-        //close db connection
-        $db = null;
-        exit();
-    }
-    // else if ($_SESSION['invalid_input'] == true) {
-    //     $message = "invalid anime selection input";
-    //     $_SESSION['invalid_input'] = null;
-    // }
+//checks if user is logged in, if the user is not logged redirect to login page
+if (!isset($_SESSION['logged_in'])) {
+    $_SESSION['need_log'] = true;
+    header('Location: login.php');
+    //close db connection
+    $db = null;
+    exit();
+}
+// else if ($_SESSION['invalid_input'] == true) {
+//     $message = "invalid anime selection input";
+//     $_SESSION['invalid_input'] = null;
+// }
 
 //informs the user if they have successfully registered
 else if (isset($_SESSION['reg_success']) && $_SESSION['reg_success'] == true) {
@@ -73,50 +73,50 @@ if (!empty($_POST['title']) || !empty($_POST['year']) || !empty($_POST['genre'])
 
     // checking if search terms were inputted
     if (!empty($_POST['title']) || !empty($_POST['year']) || !empty($_POST['genre'])) {
-		$anime_search = $anime_search.' where';
+        $anime_search = $anime_search . ' where';
 
-		//adds title to query if title was input
-		if (!empty($_POST['title'])) {
-			$title = trim($_POST['title']);
-			$anime_search = $anime_search.' title like :title';
+        //adds title to query if title was input
+        if (!empty($_POST['title'])) {
+            $title = trim($_POST['title']);
+            $anime_search = $anime_search . ' title like :title';
 
-			if (!empty($_POST['year']) || !empty($_POST['genre']))
-				$anime_search = $anime_search.' or';
-		}
+            if (!empty($_POST['year']) || !empty($_POST['genre']))
+                $anime_search = $anime_search . ' or';
+        }
 
-		//adds year to query if genre was selected
-		if (!empty($_POST['year'])) {
-			$year = $_POST['year'];
-			$anime_search = $anime_search.' year like :year';
+        //adds year to query if genre was selected
+        if (!empty($_POST['year'])) {
+            $year = $_POST['year'];
+            $anime_search = $anime_search . ' year like :year';
 
-			if (!empty($_POST['genre']))
-				$anime_search = $anime_search.' or';
-		}
+            if (!empty($_POST['genre']))
+                $anime_search = $anime_search . ' or';
+        }
 
-		//adds genre to query if genre was selected
-		if (!empty($_POST['genre'])) {
-			$genre = $_POST['genre'];
-			$anime_search = $anime_search.' genre like :genre';
-		}
-	}
+        //adds genre to query if genre was selected
+        if (!empty($_POST['genre'])) {
+            $genre = $_POST['genre'];
+            $anime_search = $anime_search . ' genre like :genre';
+        }
+    }
 
     //prepares query
-	$query = $db->prepare($anime_search);
+    $query = $db->prepare($anime_search);
 
-	//binds title parameter if exists
-	if (!empty($title)) {
-		$title = '%'.$title.'%';
-		$query->bindParam(':title', $title);
-	}
+    //binds title parameter if exists
+    if (!empty($title)) {
+        $title = '%' . $title . '%';
+        $query->bindParam(':title', $title);
+    }
 
     //binds rating parameter if exists
-	if (!empty($year))
+    if (!empty($year))
         $query->bindParam(':year', $year);
 
-	//binds genre parameter if exists
-	if (!empty($genre)) {
-		$genre = '%'.$genre.'%';
-		$query->bindParam(':genre', $genre);
+    //binds genre parameter if exists
+    if (!empty($genre)) {
+        $genre = '%' . $genre . '%';
+        $query->bindParam(':genre', $genre);
     }
 }
 
@@ -185,7 +185,7 @@ $results = $query->fetchAll();
         <div class="text-center mx-auto mt-5">
             <h3 class="text-danger">
                 <?php
-                    echo $message;
+                echo $message;
                 ?>
             </h3>
             <img src="./assets/sushicloud.png" width="300px" height="100px" alt="sushicloud">
@@ -198,21 +198,26 @@ $results = $query->fetchAll();
                     <input name="title" type="text" class="form-control" placeholder="Anime Title">
                 </div>
                 <div class="col">
-                    <select name="year" class="form-control">
-                        <option value="">Year</option>
-                        <option value="2022">2022</option>
-                        <option value="2021">2021</option>
-                        <option value="2020">2020</option>
-                        <option value="2019">2019</option>
-                    </select>
+                    <input name="year" type="text" class="form-control" placeholder="Year">
                 </div>
                 <div class="col">
                     <select name="genre" class="form-control">
-                        <option value="">Genre</option>
-                        <option value="Romance">Romance</option>
+                        <option value=''>Select a Genre</option>
                         <option value="Action">Action</option>
+                        <option value="Adventure">Adventure</option>
                         <option value="Comedy">Comedy</option>
-                        <option value="Slife-of-Life">Slice of Life</option>
+                        <option value="Drama">Drama</option>
+                        <option value="Fantasy">Fantasy</option>
+                        <option value="Music">Music</option>
+                        <option value="Romance">Romance</option>
+                        <option value="Sci-Fi">Sci-Fi</option>
+                        <option value="Seinen">Seinen</option>
+                        <option value="Shojo">Shojo</option>
+                        <option value="Shonen">Shonen</option>
+                        <option value="SliceofLife">Slice of Life</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Supernatural">Supernatural</option>
+                        <option value="Thriller">Thriller</option>
                     </select>
                 </div>
                 <div class="col">
@@ -231,17 +236,17 @@ $results = $query->fetchAll();
                 //outputs all results passed
                 foreach ($results as $row) {
                     echo '<div class="card text-center ms-3 mt-3" style="width: 25rem;">';
-                        echo "<img src='".$row['image_url']."' class='card-img-top mx-auto mt-3' alt='anime image' style='width: 200px;'>";
-                        echo '<div class="card-body">';
-                        echo '<h5 class="card-title">'.$row['title'].'</h5>';
-                        echo '<h6 class="card-subtitle mb-2 text-muted">'.$row['year'].'</h6>';
-                        echo '<p class="card-text text-truncate">'.$row['description'].'</p>';
-                        echo '<form action="view_anime.php" method="post">';
-                        echo "<input type='hidden' name='title' value='".$row['title']."'>";
-                        echo "<input class='btn btn-dark border-light' type='submit' value='View Anime' style='background-color: rgba(232,84,74,255);'>";
-                        echo '</form>';
-                        echo '</div>';
-                        echo '</div>';
+                    echo "<img src='" . $row['image_url'] . "' class='card-img-top mx-auto mt-3' alt='anime image' style='width: 200px; height: 275px;'>";
+                    echo '<div class="card-body">';
+                    echo '<h5 class="card-title">' . $row['title'] . '</h5>';
+                    echo '<h6 class="card-subtitle mb-2 text-muted">' . $row['year'] . '</h6>';
+                    echo '<p class="card-text text-truncate">' . $row['description'] . '</p>';
+                    echo '<form action="view_anime.php" method="post">';
+                    echo "<input type='hidden' name='title' value='" . $row['title'] . "'>";
+                    echo "<input class='btn btn-dark border-light' type='submit' value='View Anime' style='background-color: rgba(232,84,74,255);'>";
+                    echo '</form>';
+                    echo '</div>';
+                    echo '</div>';
                 }
             } else {
                 echo "<h6 class='text-center mt-5' style='color: rgba(232,84,74,255);'>No results.</h6>";
@@ -262,5 +267,8 @@ $results = $query->fetchAll();
 //closes db connection
 $db = null;
 ?>
+
+<!-- footer -->
+<div class="pt-5"></div>
 
 </html>
