@@ -115,16 +115,15 @@ $results = $query->fetchAll();
                             </thead>
                             <?php
                             foreach ($results as $row) {
-                                echo "<form action='#' method='post'>
+                                echo "<form action='./background_scripts/delete_user_validation.php' method='post'>
                                     <td>" . $row['username'] . "</td>
                                     <td>" . $row['email'] . "</td>
                                     <td>" . $row['first_name'] . "</td>
                                     <td>" . $row['last_name'] . "</td>
                                     <td>" . $row['address'] . "</td>
                                     <td>
-                                        <input type='hidden' name='username' value='" . $row['username'] . "'>
+                                        <input type='hidden' name='user' value='" . $row['username'] . "'>
                                         <input type='submit' value='Delete' class='btn btn-danger'>
-                                        <input type='submit' value='Edit' class='btn btn-danger'>
                                         </form>
                                     </td>
                                 </tr>";

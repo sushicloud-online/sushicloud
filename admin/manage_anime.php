@@ -123,7 +123,7 @@ $results = $query->fetchAll();
                             </thead>
                             <?php
                             foreach ($results as $row) {
-                                echo "<form action='#' method='post'>
+                                echo "<form action='./background_scripts/delete_anime_validation.php' method='post'>
                                     <td>" . $row['title'] . "</td>
                                     <td>" . $row['year'] . "</td>
                                     <td>" . $row['season'] . "</td>
@@ -134,7 +134,6 @@ $results = $query->fetchAll();
                                     <td>
                                         <input type='hidden' name='title' value='" . $row['title'] . "'>
                                         <input type='submit' value='Delete' class='btn btn-danger'>
-                                        <input type='submit' value='Edit' class='btn btn-danger mt-2 ps-3 pe-3'>
                                         </form>
                                     </td>
                                 </tr>";

@@ -6,11 +6,11 @@
 	session_start();
 
 	//takes input and assigns it to variable
-	$title = $_POST['title'];
+	$user = $_POST['user'];
 
 	//prepares statement
-	$query = $db->prepare('delete from anime where title = :title');
-	$query->bindParam(':title', $title);
+	$query = $db->prepare('delete from users where username = :user');
+	$query->bindParam(':user', $user);
 
 	//checks if delete with successful
 	if ($query->execute())
@@ -19,8 +19,8 @@
 	else
 		$_SESSION['del_fail'] = true;
 
-	//redirects to manage anime page
-	header('Location: ../manage_anime.php');
+	//redirects to manage users page
+	header('Location: ../manage_users.php');
 
 	//closes db connection
 	$db = null;
