@@ -7,8 +7,8 @@
   // take in input from view_anime.php
 	$title = $_POST['title'];
 	$status = $_POST['status'];
-  $ep_count = $_POST['ep_count'];
-  $score = $_POST['score'];
+	$ep_count = $_POST['ep_count'];
+	$score = $_POST['score'];
 
   //checks if all input was passed
 	if (empty($status) || empty($ep_count) || empty($score)) {
@@ -20,23 +20,29 @@
 		exit();
 	}
 
-  // CHECKING IF ANIME ALREADY ADDED INTO DB
-  /*
-    if title already in db then do something so user cannot add this entry to the db
-  */
-
-
-  // INSERTING ANIME INTO DB
+  	// Inserting anime into the database
 	$query = $db->prepare('INSERT INTO list (username, title, status, episodes, score) VALUES (:user, :title, :status, :ep_count, :score)');
 	$query->bindParam(':user', $_SESSION['user']);
-  $query->bindParam(':title', $title);
-  $query->bindParam(':status', $status);
-  $query->bindParam(':ep_count', $ep_count);
-  $query->bindParam(':score', $score);
+	$query->bindParam(':title', $title);
+	$query->bindParam(':status', $status);
+	$query->bindParam(':ep_count', $ep_count);
+	$query->bindParam(':score', $score);
   
-  // if anime added to database then redirect to mylist.php
-  if ($query->execute()) {
-    $result = $query->fetch();
+	// Getting the count of the number of rows in table
+	$sql = "SELECT COUNT(*) FROM list WHERE username = ? AND title = ?";
+	$result2 = $db->prepare($sql);
+	$result2->execute(array($_SESSION['user'], $title));
+	$num_of_rows = $result2->fetchColumn();
+
+	echo $num_of_rows;
+
+	// if anime is already in db then redirect to homepage
+	if($num_of_rows > 0){
+		$_SESSION['anime_already_in_db'] = true;
+		header("Location: ../homepage.php");
+	}
+	else if ($query->execute()) {
+		$result = $query->fetch();
 		//redirects to manage_anime if successful
 		$_SESSION['anime_added'] = true;
 		header("Location: ../mylist.php");
