@@ -47,11 +47,12 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
     TODO: create query for getting admin info, so something like SELECT * FROM admin where admin_username = $_SESSION['user']
 */
 
-//prepares and executes search statement
-// $query = $db->prepare("SELECT * FROM users WHERE username = '".$_SESSION['user']."'");
-// $query->execute();
+$query = $db->prepare('SELECT * FROM admin WHERE username = :user');
+$query->bindParam(':user', $_SESSION['user']);
 
-// $results = $query->fetchAll();
+//gets query results
+$query->execute();
+$result = $query->fetch();
 ?>
 
 <!doctype html>
@@ -100,12 +101,10 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
                     <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                         <div class="card-body p-4 p-md-5">
                             <?php
-                            foreach ($results as $row) {
-                                echo '<h5>Username: ' . $row['username'] . '</h5>';
-                                echo '<h5>Email: ' . $row['email'] . '</h5>';
-                                echo '<h5>First Name: ' . $row['first_name'] . '</h5>';
-                                echo '<h5>Last Name: ' . $row['last_name'] . '</h5>';
-                            }
+                                echo '<h5>Username: <span class="text-muted">' . $result['username'] . '</span></h5>';
+                                echo '<h5>Email: <span class="text-muted">' . $result['email'] . '</span></h5>';
+                                echo '<h5>First Name: <span class="text-muted">' . $result['first_name'] . '</span></h5>';
+                                echo '<h5>Last Name: <span class="text-muted">' . $result['last_name'] . '</span></h5>';
                             ?>
                         </div>
                     </div>

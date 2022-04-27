@@ -21,11 +21,11 @@ Online repository of sushicloud, a project for CSIT 337 at Montclair State Unive
     - [ ] fix admin login, make secure, create admin create account similar to user register 
   - [x] Login Validation
   - [x] Logout
-- [ ] Finish creating all user facing files
-- [ ] Individual anime pages will only be one fluid file
-  - [ ] it will query for the requested anime resources and spew out it's data
+- [x] Finish creating all user facing files
+- [x] Individual anime pages will only be one fluid file
+  - [x] it will query for the requested anime resources and spew out it's data
 - [ ] Admin must ... 
-  - [ ] remove user
-  - [ ] add new anime 
-  - [ ] delete an anime
+  - [x] remove user
+  - [x] add new anime 
+  - [x] delete an anime
   - [ ] modify anime & users
