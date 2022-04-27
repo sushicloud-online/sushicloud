@@ -15,10 +15,10 @@ $message = '';
         $db = null;
         exit();
     }
-    else if ($_SESSION['invalid_input'] == true) {
-        $message = "invalid anime selection input";
-        $_SESSION['invalid_input'] = null;
-    }
+    // else if ($_SESSION['invalid_input'] == true) {
+    //     $message = "invalid anime selection input";
+    //     $_SESSION['invalid_input'] = null;
+    // }
 
 //informs the user if they have successfully registered
 else if (isset($_SESSION['reg_success']) && $_SESSION['reg_success'] == true) {
