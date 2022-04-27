@@ -121,25 +121,7 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
                 <label class="control-label col-sm-1" for="genre">Genre:</label>
 
                 <div class="col-sm-3">
-                    <select type="text" class="form-control" id="genre" name="genre" required>
-                        <option value=''>Select a Genre</option>
-                        <option value="Action">Action</option>
-                        <option value="Adventure">Adventure</option>
-                        <option value="Comedy">Comedy</option>
-                        <option value="Drama">Drama</option>
-                        <option value="Fantasy">Fantasy</option>
-                        <option value="Music">Music</option>
-                        <option value="Romance">Romance</option>
-                        <option value="Sci-Fi">Sci-Fi</option>
-                        <option value="Seinen">Seinen</option>
-                        <option value="Shojo">Shojo</option>
-                        <option value="Shonen">Shonen</option>
-                        <option value="SliceofLife">Slice of Life</option>
-                        <option value="Sports">Sports</option>
-                        <option value="Supernatural">Supernatural</option>
-                        <option value="Thriller">Thriller</option>
-                    </select>
-
+                    <input type="text" class="form-control" id="genre" name="genre" required>
                 </div>
             </div>
 

@@ -43,6 +43,7 @@ if (!$result) {
     $year = $result['year'];
     $image_url = $result['image_url'];
     $episodes = $result['episodes'];
+    $description = $result['description'];
 }
 
 $db = null;
@@ -85,7 +86,7 @@ $db = null;
         <!-- <img src="./assets/sushicloud.png" width="300px" height="100px" alt="sushicloud"> -->
         <h2>
             <?php
-            echo "<u>" . $title . "</u>";
+            echo "<p>" . $title . "</p>";
             ?>
         </h2>
     </div>
@@ -97,6 +98,11 @@ $db = null;
             echo "<img src='" . $image_url . "' class='card mx-auto mt-3' alt='anime image' style='width: 200px;'>";
             ?>
         </p>
+
+        <label class="control-label col-sm-1 lead">Description:</label>
+            <?php
+            echo "<p>" . $description . "</p>";
+            ?>
 
         <!-- wrap form around this div -->
     <form action="./background_scripts/add_to_list.php" method = "post">
@@ -168,5 +174,8 @@ $db = null;
 //closes db connection
 $db = null;
 ?>
+
+<!-- footer -->
+<div class="pt-5"></div>
 
 </html>
