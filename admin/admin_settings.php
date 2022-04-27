@@ -48,11 +48,10 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
 */
 
 //prepares and executes search statement
-$query = $db->prepare('select username, email, first_name, last_name from admin');
-$query->execute();
+// $query = $db->prepare("SELECT * FROM users WHERE username = '".$_SESSION['user']."'");
+// $query->execute();
 
-//gets all anime
-$results = $query->fetchAll();
+// $results = $query->fetchAll();
 ?>
 
 <!doctype html>

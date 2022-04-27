@@ -5,47 +5,53 @@ require_once 'db_connect.php';
 //includes session info
 session_start();
 
-//checks if user is logged in, if the user is not logged redirect to login page
+$notice = '';
+
+//checks if user is logged in
 if (!isset($_SESSION['logged_in'])) {
+    //if user is not logged in, redirects to login page
     $_SESSION['need_log'] = true;
-    header('Location: login.php');
+    header('Location: admin_login.php');
+
     //closes db connection
     $db = null;
     exit();
 }
 
-$title = $_POST['title'];
+//informs the user if they have successfully registered
+else if (isset($_SESSION['reg_success']) && $_SESSION['reg_success'] == true) {
+    $notice = "<p class='text-success'>You have successfully registered!</p>";
 
-// check if title was empty
-if (empty($title)) {
-    // if it was empty redirect to homepage
-    $_SESSION['mi_err'] = true;
-    header('Location: homepage.php');
-
-    $db = null;
-    exit();
+    unset($_SESSION['reg_success']);
 }
 
-//prepares query for anime title
-$query = $db->prepare('SELECT * FROM anime WHERE title = :title');
-$query->bindParam(':title', $title);
+//informs the user if they are already logged in
+else if (isset($_SESSION['already_li']) && $_SESSION['already_li'] == true) {
+    $notice = "<p class='text-danger'>You are already logged in.</p>";
 
-//gets query results
-$query->execute();
-$result = $query->fetch();
-
-// if query empty then redirect
-if (!$result) {
-    $_SESSION['mi_err'] = true;
-    header('Location: homepage.php');
-} else {
-    $title = $result['title'];
-    $year = $result['year'];
-    $image_url = $result['image_url'];
-    $episodes = $result['episodes'];
+    unset($_SESSION['already_li']);
 }
 
-$db = null;
+//informs the user they have newly logged in
+else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
+    $notice = "<p class='text-success'>You are now logged in!</p>";
+
+    unset($_SESSION['new_log']);
+} else if (isset($_SESSION['mi_err']) && $_SESSION['mi_err'] == true) {
+    $notice = "<p class='text-danger'>An error has occurred. Please try again.</p>";
+
+    unset($_SESSION['mi_err']);
+}
+
+/*
+    TODO: create query for getting user info, so something like SELECT * FROM user where username = $_SESSION['user']
+*/
+
+//prepares and executes search statement
+$query = $db->prepare("SELECT * FROM users WHERE username = '".$_SESSION['user']."'");
+// $query->execute();
+
+// $results = $query->fetchAll();
 ?>
 
 <!doctype html>
@@ -63,13 +69,14 @@ $db = null;
 </head>
 
 <body class="bg-light">
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="./homepage.php">sushicloud</a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="./mylist.php">My Lists</a>
+                        <a class="nav-link" href="./mylist.php">My Lists</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./user_settings.php">Settings</a>
@@ -81,92 +88,81 @@ $db = null;
             </div>
         </div>
     </nav>
-    <div class="text-center mx-auto mt-5">
-        <!-- <img src="./assets/sushicloud.png" width="300px" height="100px" alt="sushicloud"> -->
-        <h2>
-            <?php
-            echo "<u>" . $title . "</u>";
-            ?>
-        </h2>
+
+    <div class="container-fluid bg-light mt-3">
+        <div class="text-center mx-auto mt-5">
+            <img src="./assets/sushicloud.png" width="300px" height="100px" alt="sushicloud">
+            <h2 class="mt-2">User Account Details</h2>
+            <div class="row offset mt-3">
+                <center>
+                    <button type="button" class="btn btn-dark btn active" data-toggle="modal" data-target="#editModal">
+                        Edit Profile
+                    </button>
+                </center>
+
+                <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editModalLabel">Edit Profile</h5>
+                                <!-- close button -->
+                                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button> -->
+                            </div>
+                            <div class="modal-body">
+                                <!-- <form class="form-row align-items-center" action="#" method="post">
+                                    <fieldset disabled>
+                                        <div class="form-group">
+                                            <label for="disabledTextInput" class="col-form-label">Username:</label>
+                                            <input type="text" class="form-control" id="username" placeholder="#">
+                                        </div>
+                                    </fieldset>
+                                    <div class="form-group">
+                                        <label for="password" class="col-form-label">Password:</label>
+                                        <input type="text" class="form-control" id="username">
+                                    </div>
+                                </form> -->
+                            </div>
+                            <div class="center modal-footer">
+                                <input type="submit" class="btn btn-dark" value="Insert">
+                                <input type="reset" class="btn btn-danger" value="Clear">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    <section class="vh-200">
 
-    <div class="container text-center mx-auto pt-2">
-
-        <p>
-            <?php
-            echo "<img src='" . $image_url . "' class='card mx-auto mt-3' alt='anime image' style='width: 200px;'>";
-            ?>
-        </p>
-
-        <!-- wrap form around this div -->
-    <form action="./background_scripts/add_to_list.php" method = "post">
-        <div class="row justify-content-center mt-3">
-            <label class="control-label col-sm-1 lead">Status:</label>
-            <div class="col-sm-1">
-                <select name="status" class="form-control">
-                    <option value="">Status</option>
-                    <option value="Currently Watching">Currently Watching</option>
-                    <option value="Dropped">Dropped</option>
-                    <option value="On Hold">On Hold</option>
-                    <option value="Finished">Finished</option>
-                </select>
+        <div class="container py-3 h-50">
+            <div class="row justify-content-center align-items-center h-100">
+                <div class="col-12 col-lg-9 col-xl-7">
+                    <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                        <div class="card-body p-4 p-md-5">
+                            <?php
+                                foreach ($results as $row) {
+                                    echo '<h5>Username: ' . $row['username'] . '</h5>';
+                                    echo '<h5>Email: ' . $row['email'] . '</h5>';
+                                    echo '<h5>First Name: ' . $row['first_name'] . '</h5>';
+                                    echo '<h5>Last Name: ' . $row['last_name'] . '</h5>';
+                                    echo '<h5>Address: ' . $row['address'] . '</h5>';
+                                }
+                            ?>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class="row justify-content-center mt-2">
-            <label class="control-label col-sm-1 lead">Episodes:</label>
-            <div class="col-sm-1"> 
-                <select name="ep_count" class="form-control">
-                    <option value="">Episodes</option>
-                        <?php 
-                            for($i = 1; $i <= $episodes; $i++){
-                                echo "<option value=".$i.">".$i."</option>";
-                            }
-                        ?>
-                </select>
-            </div>
-        </div>
-
-        <div class="row justify-content-center mt-2">
-            <label class="control-label col-sm-1 lead">Score:</label>
-            <div class="col-sm-1">
-                <select name="score" class="form-control">
-                    <option value="">Score</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                </select>
-            </div>
-        </div>
-        
-        <div class="row justify-content-center mt-2">
-            <div class="col-sm-2">
-            <input type="submit" value="Add to my list" class="btn btn-dark border-light" style="background-color: rgba(232,84,74,255);">
-            </div>
-        </div>
-        <?php 
-            echo "<input type='hidden' name='title' value='".$title."'>";
-        ?>
-        </form>
-    </div>
+    </section>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 </body>
-
-<?php
-//closes db connection
-$db = null;
-?>
 
 </html>
