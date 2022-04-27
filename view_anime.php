@@ -72,7 +72,7 @@ $db = null;
                         <a class="nav-link" aria-current="page" href="./mylist.php">My Lists</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Settings</a>
+                        <a class="nav-link" href="./user_settings.php">Settings</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./user_logout.php">Logout</a>
@@ -103,11 +103,11 @@ $db = null;
         <div class="row justify-content-center mt-3">
             <label class="control-label col-sm-1 lead">Status:</label>
             <div class="col-sm-1">
-                <select name="genre" class="form-control">
+                <select name="status" class="form-control">
                     <option value="">Status</option>
-                    <option value="CW">Currently Watching</option>
+                    <option value="Currently Watching">Currently Watching</option>
                     <option value="Dropped">Dropped</option>
-                    <option value="OnHold">On Hold</option>
+                    <option value="On Hold">On Hold</option>
                     <option value="Finished">Finished</option>
                 </select>
             </div>
@@ -116,7 +116,7 @@ $db = null;
         <div class="row justify-content-center mt-2">
             <label class="control-label col-sm-1 lead">Episodes:</label>
             <div class="col-sm-1"> 
-                <select name="ep-dropdown" class="form-control">
+                <select name="ep_count" class="form-control">
                     <option value="">Episodes</option>
                         <?php 
                             for($i = 1; $i <= $episodes; $i++){
@@ -130,7 +130,7 @@ $db = null;
         <div class="row justify-content-center mt-2">
             <label class="control-label col-sm-1 lead">Score:</label>
             <div class="col-sm-1">
-                <select name="genre" class="form-control">
+                <select name="score" class="form-control">
                     <option value="">Score</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -141,7 +141,7 @@ $db = null;
                     <option value="7">7</option>
                     <option value="8">8</option>
                     <option value="9">9</option>
-                    <option value="10">10 🏆</option>
+                    <option value="10">10</option>
                 </select>
             </div>
         </div>
@@ -151,7 +151,9 @@ $db = null;
             <input type="submit" value="Add to my list" class="btn btn-dark border-light" style="background-color: rgba(232,84,74,255);">
             </div>
         </div>
-
+        <?php 
+            echo "<input type='hidden' name='title' value='".$title."'>";
+        ?>
         </form>
     </div>
 
