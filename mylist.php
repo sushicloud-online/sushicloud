@@ -105,15 +105,15 @@
                             <td>
                                 <?php 
                                     // displays amount of Currently Watching shows
-                                    $query = $db->prepare('SELECT * FROM list WHERE status = :status AND username = :user');
+                                    $query1 = $db->prepare('SELECT * FROM list WHERE status = :status AND username = :user');
                                     $var = "Currently Watching";
-                                    $query->bindParam(':status', $var);
-                                    $query->bindParam(':user', $_SESSION['user']);
+                                    $query1->bindParam(':status', $var);
+                                    $query1->bindParam(':user', $_SESSION['user']);
                                 
-                                    $query->execute();
-                                    $result = $query->fetch();
+                                    $query1->execute();
+                                    $result1 = $query1->fetchAll();
                                     
-                                    $count = $query->rowCount();
+                                    $count = $query1->rowCount();
                                     $count_cw = $count;
                                     echo $count_cw;
                                 ?>
@@ -121,15 +121,15 @@
                             <td>
                                 <?php
                                     // displays amount of Finished shows for user
-                                    $query = $db->prepare('SELECT * FROM list WHERE status = :status AND username = :user');
+                                    $query2 = $db->prepare('SELECT * FROM list WHERE status = :status AND username = :user');
                                     $var = "Finished";
-                                    $query->bindParam(':status', $var);
-                                    $query->bindParam(':user', $_SESSION['user']);
+                                    $query2->bindParam(':status', $var);
+                                    $query2->bindParam(':user', $_SESSION['user']);
                                 
-                                    $query->execute();
-                                    $result = $query->fetch();
+                                    $query2->execute();
+                                    $result2 = $query2->fetchAll();
                                     
-                                    $count = $query->rowCount();
+                                    $count = $query2->rowCount();
                                     $count_finished = $count; 
                                     echo $count_finished;
                                 ?>
@@ -137,15 +137,15 @@
                             <td>
                                 <?php 
                                     // displays amount of On Hold shows for user
-                                    $query = $db->prepare('SELECT * FROM list WHERE status = :status AND username = :user');
+                                    $query3 = $db->prepare('SELECT * FROM list WHERE status = :status AND username = :user');
                                     $var = "On Hold";
-                                    $query->bindParam(':status', $var);
-                                    $query->bindParam(':user', $_SESSION['user']);
+                                    $query3->bindParam(':status', $var);
+                                    $query3->bindParam(':user', $_SESSION['user']);
                                 
-                                    $query->execute();
-                                    $result = $query->fetch();
+                                    $query3->execute();
+                                    $result3 = $query3->fetchAll();
                                     
-                                    $count = $query->rowCount();
+                                    $count = $query3->rowCount();
                                     $count_onhold = $count;
                                     echo $count_onhold;
                                 ?>
@@ -153,15 +153,15 @@
                             <td>
                                 <?php 
                                     // displays amount of Dropped shows for user
-                                    $query = $db->prepare('SELECT * FROM list WHERE status = :status AND username = :user');
+                                    $query4 = $db->prepare('SELECT * FROM list WHERE status = :status AND username = :user');
                                     $var = "Dropped";
-                                    $query->bindParam(':status', $var);
-                                    $query->bindParam(':user', $_SESSION['user']);
+                                    $query4->bindParam(':status', $var);
+                                    $query4->bindParam(':user', $_SESSION['user']);
                                 
-                                    $query->execute();
-                                    $result = $query->fetch();
+                                    $query4->execute();
+                                    $result4 = $query4->fetchAll();
                                     
-                                    $count = $query->rowCount();
+                                    $count = $query4->rowCount();
                                     $count_dropped = $count;
                                     echo $count_dropped;
                                 ?>
@@ -169,15 +169,15 @@
                             <td>
                                 <?php 
                                     // displays amount of Plan to Watch shows for user
-                                    $query = $db->prepare('SELECT * FROM list WHERE status = :status AND username = :user');
+                                    $query5 = $db->prepare('SELECT * FROM list WHERE status = :status AND username = :user');
                                     $var = "Plan to Watch";
-                                    $query->bindParam(':status', $var);
-                                    $query->bindParam(':user', $_SESSION['user']);
+                                    $query5->bindParam(':status', $var);
+                                    $query5->bindParam(':user', $_SESSION['user']);
                                 
-                                    $query->execute();
-                                    $result = $query->fetch();
+                                    $query5->execute();
+                                    $result5 = $query5->fetchAll();
                                     
-                                    $count = $query->rowCount();
+                                    $count = $query5->rowCount();
                                     $count_ptw = $count;
                                     echo $count_ptw;
                                 ?>
@@ -215,6 +215,131 @@
                             <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-5 h-50">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-12 col-lg-13 col-xl-13">
+                <div class="card shadow-2-strong card-manage" style="border-radius: 15px;">
+                    <div class="card-body p-4 p-md-5">
+                     <h3 class="text-center"><u>Watching</u></h3>
+                        <?php 
+                            // getting currently watch animes
+                            if ($result1) {
+                                echo "<ol class='list-group-numbered'>";
+
+                                foreach ($result1 as $row) {
+                                    echo "<li class='list-group-item'>".$row['title']."</li>";
+                                }
+                                echo "</ol>";
+                            }
+                            else {
+                                echo "<h6 class='text-center mt-5' style='color: rgba(232,84,74,255);'>You're not watching any shows</h6>";
+                            }                                    
+                        ?>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-5 h-50">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-12 col-lg-13 col-xl-13">
+                <div class="card shadow-2-strong card-manage" style="border-radius: 15px;">
+                    <div class="card-body p-4 p-md-5">
+                     <h3 class="text-center"><u>Finished</u></h3>
+                        <?php 
+                            // getting currently watch animes
+                            if ($result2) {
+                                echo "<ol class='list-group-numbered'>";
+
+                                foreach ($result2 as $row) {
+                                    echo "<li class='list-group-item'>".$row['title']."</li>";
+                                }
+                                echo "</ol>";
+                            }
+                            else {
+                                echo "<h6 class='text-center mt-2' style='color: rgba(232,84,74,255);'>You're not finished with any shows</h6>";
+                            }                                    
+                        ?>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-5 h-50">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-12 col-lg-13 col-xl-13">
+                <div class="card shadow-2-strong card-manage" style="border-radius: 15px;">
+                    <div class="card-body p-4 p-md-5">
+                     <h3 class="text-center"><u>On Hold</u></h3>
+                        <?php 
+                            // getting currently watch animes
+                            if ($result3) {
+                                echo "<ol class='list-group-numbered'>";
+
+                                foreach ($result3 as $row) {
+                                    echo "<li class='list-group-item'>".$row['title']."</li>";
+                                }
+                                echo "</ol>";
+                            }
+                            else {
+                                echo "<h6 class='text-center mt-2' style='color: rgba(232,84,74,255);'>You don't have any shows on hold</h6>";
+                            }                                    
+                        ?>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-5 h-50">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-12 col-lg-13 col-xl-13">
+                <div class="card shadow-2-strong card-manage" style="border-radius: 15px;">
+                    <div class="card-body p-4 p-md-5">
+                     <h3 class="text-center"><u>Dropped</u></h3>
+                        <?php 
+                            // getting currently watch animes
+                            if ($result4) {
+                                echo "<ol class='list-group-numbered'>";
+
+                                foreach ($result4 as $row) {
+                                    echo "<li class='list-group-item'>".$row['title']."</li>";
+                                }
+                                echo "</ol>";
+                            }
+                            else {
+                                echo "<h6 class='text-center mt-2' style='color: rgba(232,84,74,255);'>You don't have any shows dropped</h6>";
+                            }                                    
+                        ?>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-5 h-50">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-12 col-lg-13 col-xl-13">
+                <div class="card shadow-2-strong card-manage" style="border-radius: 15px;">
+                    <div class="card-body p-4 p-md-5">
+                     <h3 class="text-center"><u>Plan to Watch</u></h3>
+                        <?php 
+                            // getting currently watch animes
+                            if ($result5) {
+                                echo "<ol class='list-group-numbered'>";
+
+                                foreach ($result5 as $row) {
+                                    echo "<li class='list-group-item'>".$row['title']."</li>";
+                                }
+                                echo "</ol>";
+                            }
+                            else {
+                                echo "<h6 class='text-center mt-2' style='color: rgba(232,84,74,255);'>You don't have any shows planned to watch</h6>";
+                            }                                    
+                        ?>
                 </div>
             </div>
         </div>
