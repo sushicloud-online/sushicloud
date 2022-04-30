@@ -14,7 +14,7 @@
 
 <body class="bg-light">
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand mx-auto" href="./index.php">sushicloud</a>
         </div>

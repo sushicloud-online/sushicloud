@@ -18,31 +18,6 @@ if (!isset($_SESSION['logged_in'])) {
     exit();
 }
 
-//informs the user if they have successfully registered
-else if (isset($_SESSION['reg_success']) && $_SESSION['reg_success'] == true) {
-    $notice = "<p class='text-success'>You have successfully registered!</p>";
-
-    unset($_SESSION['reg_success']);
-}
-
-//informs the user if they are already logged in
-else if (isset($_SESSION['already_li']) && $_SESSION['already_li'] == true) {
-    $notice = "<p class='text-danger'>You are already logged in.</p>";
-
-    unset($_SESSION['already_li']);
-}
-
-//informs the user they have newly logged in
-else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
-    $notice = "<p class='text-success'>You are now logged in!</p>";
-
-    unset($_SESSION['new_log']);
-} else if (isset($_SESSION['mi_err']) && $_SESSION['mi_err'] == true) {
-    $notice = "<p class='text-danger'>An error has occurred. Please try again.</p>";
-
-    unset($_SESSION['mi_err']);
-}
-
 ?>
 
 <!doctype html>
@@ -61,7 +36,7 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
 
 <body class="bg-light">
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="admin_homepage.php">sushicloud</a>
             <div class="collapse navbar-collapse" id="navbarNav">
