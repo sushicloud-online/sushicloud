@@ -32,21 +32,21 @@
 	//checks if all input was passed
 	if (empty($old_password) || empty($new_password) || empty($confirm_new_password)) {
 		$_SESSION['new_pass_fail'] = true;
-		header('Location: ../which.php');
+		header('Location: ../user_settings.php');
 		//closes db connection
 		$db = null;
 		exit();
 	}
     else if(!password_verify($old_password, $current_password)){
         $_SESSION['new_pass_fail'] = true;
-		header('Location: ../one.php');
+		header('Location: ../user_settings.php');
 		//closes db connection
 		$db = null;
 		exit();
     }
     else if($new_password != $confirm_new_password){
         $_SESSION['new_pass_fail'] = true;
-		header('Location: ../isit.php');
+		header('Location: ../user_settings.php');
 		//closes db connection
 		$db = null;
 		exit();
