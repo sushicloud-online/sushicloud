@@ -5,7 +5,7 @@ require_once 'db_connect.php';
 //includes session info
 session_start();
 
-$notice = '';
+$message = '';
 
 //checks if user is logged in
 if (!isset($_SESSION['logged_in'])) {
@@ -17,34 +17,21 @@ if (!isset($_SESSION['logged_in'])) {
     $db = null;
     exit();
 }
-
-//informs the user if they have successfully registered
-else if (isset($_SESSION['reg_success']) && $_SESSION['reg_success'] == true) {
-    $notice = "<p class='text-success'>You have successfully registered!</p>";
-
-    unset($_SESSION['reg_success']);
+else if (isset($_SESSION['new_pass_fail']) && $_SESSION['new_pass_fail'] == true) {
+    $message = "<p class='text-danger mt-3 text-center'>";
+    $message .= "Passwords not the same or correct.</p>";
+    $message .= "</p>";
+    $_SESSION['new_pass_fail'] = false;
 }
-
-//informs the user if they are already logged in
-else if (isset($_SESSION['already_li']) && $_SESSION['already_li'] == true) {
-    $notice = "<p class='text-danger'>You are already logged in.</p>";
-
-    unset($_SESSION['already_li']);
-}
-
-//informs the user they have newly logged in
-else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
-    $notice = "<p class='text-success'>You are now logged in!</p>";
-
-    unset($_SESSION['new_log']);
-} else if (isset($_SESSION['mi_err']) && $_SESSION['mi_err'] == true) {
-    $notice = "<p class='text-danger'>An error has occurred. Please try again.</p>";
-
-    unset($_SESSION['mi_err']);
+else if (isset($_SESSION['passwordChange_success']) && $_SESSION['passwordChange_success'] == true){
+    $message = "<p class='text-success mt-3 text-center'>";
+    $message .= "Password changed!</p>";
+    $message .= "</p>";
+    $_SESSION['passwordChange_success'] = false;
 }
 
 /*
-    TODO: create query for getting user info, so something like SELECT * FROM user where username = $_SESSION['user']
+    create query for getting user info, so something like SELECT * FROM user where username = $_SESSION['user']
 */
 
 $query = $db->prepare('SELECT * FROM users WHERE username = :user');
@@ -90,6 +77,12 @@ $result = $query->fetch();
         </div>
     </nav>
 
+    <h3>
+        <?php 
+            echo $message;
+        ?>
+    </h3>
+
     <div class="container-fluid bg-light mt-3">
         <div class="text-center mx-auto mt-5">
             <img src="./assets/sushicloud.png" width="300px" height="100px" alt="sushicloud">
@@ -100,41 +93,69 @@ $result = $query->fetch();
                         Edit Profile
                     </button>
                 </center>
-
-                <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="editModalLabel">Edit Profile</h5>
-                                <!-- close button -->
-                                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button> -->
-                            </div>
-                            <div class="modal-body">
-                                <!-- <form class="form-row align-items-center" action="#" method="post">
-                                    <fieldset disabled>
-                                        <div class="form-group">
-                                            <label for="disabledTextInput" class="col-form-label">Username:</label>
-                                            <input type="text" class="form-control" id="username" placeholder="#">
-                                        </div>
-                                    </fieldset>
-                                    <div class="form-group">
-                                        <label for="password" class="col-form-label">Password:</label>
-                                        <input type="text" class="form-control" id="username">
+                <div class="container">
+                        <!-- Modal -->
+                        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
+                                        <button type="button" class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
                                     </div>
-                                </form> -->
-                            </div>
-                            <div class="center modal-footer">
-                                <input type="submit" class="btn btn-dark" value="Insert">
-                                <input type="reset" class="btn btn-danger" value="Clear">
+                                        <div class="modal-body">
+                                            <form class="form-horizontal form-group align-items-center mt-5" action="./background_scripts/change_password.php" method="post">
+                                                <div class="row justify-content-center">
+                                                    <label class="control-label col-sm-2" for="old_password">Old Password:</label>
+
+                                                    <div class="col-sm-5">
+                                                        <input type="text" class="form-control" id="old_password" name="old_password" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row justify-content-center mt-3">
+                                                    <label class="control-label col-sm-2" for="new_password">New Password:</label>
+
+                                                    <div class="col-sm-5">
+                                                        <input type="password" class="form-control" id="new_password" name="new_password" required>
+                                                    </div>
+                                                </div>
+                                                <div class="row justify-content-center mt-3">
+                                                    <label class="control-label col-sm-2" for="confirm_new_password">Confirm New Password:</label>
+
+                                                    <div class="col-sm-5">
+                                                        <input type="password" class="form-control" id="confirm_new_password" name="confirm_new_password" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                    <input type="submit" class="btn btn-dark" value="Save Changes"></input>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    
+
+    <!-- <script>
+        function openPasswordForm() {
+          document.getElementById("passwordForm").style.display = "block";
+        }
+        
+        function closePasswordForm() {
+          document.getElementById("passwordForm").style.display = "none";
+        }
+        </script> -->
+
+    
     <section class="vh-200">
 
         <div class="container py-3 h-50">
