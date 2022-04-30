@@ -99,7 +99,7 @@ $results = $query->fetchAll();
         <div class="row offset mt-3">
             <center>
                 <a href="insert_anime.php" class="btn btn-dark btn active" role="button">Insert Anime</a>
-                <a href="#" class="btn btn-dark btn active" role="button">Edit Anime</a>
+                <!-- <a href="#" class="btn btn-dark btn active" role="button">Edit Anime</a> -->
             </center>
         </div>
 
