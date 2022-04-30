@@ -20,6 +20,7 @@
 		exit();
 	}
 
+
   	// Inserting anime into the database
 	$query = $db->prepare('INSERT INTO list (username, title, status, episodes, score) VALUES (:user, :title, :status, :ep_count, :score)');
 	$query->bindParam(':user', $_SESSION['user']);

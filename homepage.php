@@ -15,35 +15,19 @@ if (!isset($_SESSION['logged_in'])) {
     $db = null;
     exit();
 }
-// else if ($_SESSION['invalid_input'] == true) {
-//     $message = "invalid anime selection input";
-//     $_SESSION['invalid_input'] = null;
-// }
+else if (isset($_SESSION['anime_already_in_db']) && $_SESSION['anime_already_in_db'] == true) {
+    $message = "<p class='text-danger'>";
+    $message .= "anime already saved to a list.</p>";
+    $message .= "</p>";
+    $_SESSION['anime_already_in_db'] = false;
+}
 
 //informs the user if they have successfully registered
 else if (isset($_SESSION['reg_success']) && $_SESSION['reg_success'] == true) {
-    $notice = "<p class='text-success'>You have successfully registered!</p>";
-
-    unset($_SESSION['reg_success']);
+    $message = "<p class='text-success'>You have successfully registered!</p>";
 }
 
-//informs the user if they are already logged in
-else if (isset($_SESSION['already_li']) && $_SESSION['already_li'] == true) {
-    $notice = "<p class='text-danger'>You are already logged in.</p>";
-
-    unset($_SESSION['already_li']);
-}
-
-//informs the user they have newly logged in
-else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
-    $notice = "<p class='text-success'>You are now logged in!</p>";
-
-    unset($_SESSION['new_log']);
-} else if (isset($_SESSION['mi_err']) && $_SESSION['mi_err'] == true) {
-    $notice = "<p class='text-danger'>An error has occurred. Please try again.</p>";
-
-    unset($_SESSION['mi_err']);
-}
+// user query for specific anime
 
 $anime_search = 'SELECT title, year, description, image_url from anime';
 
@@ -185,7 +169,7 @@ $results = $query->fetchAll();
     <div class="container">
 
         <div class="text-center mx-auto mt-5">
-            <h3 class="text-danger">
+            <h3>
                 <?php
                 echo $message;
                 ?>
