@@ -115,6 +115,7 @@ $db = null;
                     <option value="Dropped">Dropped</option>
                     <option value="On Hold">On Hold</option>
                     <option value="Finished">Finished</option>
+                    <option value="Plan to Watch">Plan to Watch</option>
                 </select>
             </div>
         </div>
