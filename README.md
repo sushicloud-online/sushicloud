@@ -18,7 +18,6 @@ Online repository of sushicloud, a project for CSIT 337 at Montclair State Unive
 
 - [ ] Login & Registration System (User and Admin)
   - [x] Register Validation (user added to database)
-    - [ ] fix admin login, make secure, create admin create account similar to user register 
   - [x] Login Validation
   - [x] Logout
 - [x] Finish creating all user facing files
