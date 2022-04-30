@@ -90,7 +90,7 @@ $result = $query->fetch();
             <div class="row offset mt-3">
                 <center>
                     <button type="button" class="btn btn-dark btn active" data-toggle="modal" data-target="#editModal">
-                        Edit Profile
+                        Change Password
                     </button>
                 </center>
                 <div class="container">
