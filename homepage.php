@@ -123,8 +123,6 @@ if (!empty($genre)) {
     $query->bindParam(':genre', $genre);
 }
 
-// TODO: need to make a season query (would do it but i don't want to mess something up)
-
 //runs query and gets results
 $query->execute();
 $results = $query->fetchAll();
@@ -204,15 +202,6 @@ $results = $query->fetchAll();
                         <option value="Sports">Sports</option>
                         <option value="Supernatural">Supernatural</option>
                         <option value="Thriller">Thriller</option>
-                    </select>
-                </div>
-                <div class="col">
-                    <select name="season" class="form-control">
-                    <option value=''>Select a Season</option>
-                        <option value="Winter">Winter</option>
-                        <option value="Spring">Spring</option>
-                        <option value="Summer">Summer</option>
-                        <option value="Fall">Fall</option>
                     </select>
                 </div>
                 <div class="col">
