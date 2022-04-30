@@ -76,7 +76,7 @@
 		//redirects to login if successful
 		$_SESSION['reg_success'] = true;
 		$_SESSION['logged_in'] = true;
-		header("Location: ../admin_login.php");
+		header("Location: ../manage_admin.php");
 	}
 
 	else {

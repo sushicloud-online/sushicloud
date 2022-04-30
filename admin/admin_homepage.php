@@ -62,6 +62,7 @@ if (!isset($_SESSION['logged_in'])) {
             <center>
                 <a href="manage_anime.php" class="btn btn-dark btn-lg active" role="button">Manage Anime</a>
                 <a href="manage_users.php" class="btn btn-dark btn-lg active" role="button">Manage Users</a>
+                <a href="manage_admin.php" class="btn btn-dark btn-lg active" role="button">Manage Admin</a>
             </center>   
         </div>
 
