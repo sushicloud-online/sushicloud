@@ -37,13 +37,13 @@
     //checks if insert was successful
 	if ($query->execute()) {
 		//redirects to manage_anime if successful
-		$_SESSION['reg_success'] = true;
+		$_SESSION['insert_success'] = true;
 		header("Location: ../manage_anime.php");
 	}
 
 	else {
 		//redirects to insert page if failed
-		$_SESSION['reg_err'] = true;
+		$_SESSION['insert_error'] = true;
 		header('Location: ../insert_anime.php');
 	}
 

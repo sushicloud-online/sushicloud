@@ -97,7 +97,7 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
                 <label class="control-label col-sm-1" for="year">Year:</label>
 
                 <div class="col-sm-3">
-                    <input type="text" class="form-control" id="year" name="year" pattern="{0-9}4" required>
+                    <input type="text" class="form-control" id="year" name="year" pattern="\d{4}" required>
                 </div>
             </div>
 
@@ -145,7 +145,7 @@ else if (isset($_SESSION['new_log']) && $_SESSION['new_log'] == true) {
                 <label class="control-label col-sm-1" for="image_url">Episodes:</label>
 
                 <div class="col-sm-3">
-                    <input type="text" class="form-control" id="episodes" name="episodes" required>
+                    <input type="number" class="form-control" id="episodes" name="episodes" required>
                 </div>
             </div>
 
