@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `sushicloud`
+-- Database: `sushiclouddatabase`
 --
 
 -- --------------------------------------------------------
@@ -93,23 +93,6 @@ CREATE TABLE `list` (
   `score` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `list`
---
-
-INSERT INTO `list` (`username`, `title`, `status`, `episodes`, `score`) VALUES
-('bri', 'Spy x Family', 'Currently Watching', 3, 10),
-('bri', 'Demon Slayer', 'Finished', 11, 10),
-('bri', 'Dont Toy with Me, Miss Nagatoro', 'Dropped', 3, 7),
-('bri', 'Dont Toy with Me, Miss Nagatoro', 'Finished', 12, 10),
-('ray', 'Black Clover', 'Currently Watching', 170, 10),
-('sushicloud', 'Spy x Family', 'Currently Watching', 3, 10),
-('sushicloud', 'My Dress-Up Darling', 'Finished', 12, 10),
-('sushicloud', 'Maid Sama!', 'Finished', 26, 10),
-('sushicloud', 'Dont Toy with Me, Miss Nagatoro', 'Dropped', 3, 7),
-('sushicloud', 'One Piece', 'On Hold', 716, 10),
-('sushicloud', 'Black Clover', 'Plan to Watch', 1, 6);
-
 -- --------------------------------------------------------
 
 --
@@ -125,15 +108,12 @@ CREATE TABLE `users` (
   `address` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `users`
---
 
-INSERT INTO `users` (`username`, `password`, `email`, `first_name`, `last_name`, `address`) VALUES
-('sushicloud', '$2y$10$C4kybqfNPrr/lfFdvvtdyOqm.AODgfpFXehv7EpDAK0UYiOfncJvy', 'sc@sushicloud.com', 'Sushi', 'Cloud', '1 Normal Ave, Montclair, NJ 07043'),
-('sarmientob1', '$2y$10$cd5M5pqOZ3FPHCWoWAEf9uBP9A5JUoBCAYVyLV9h1ALjPsBRSCsZW', 'sarmientob1@montclair.edu', 'Brianna', 'Sarmiento', '1 Normal Ave, Montclair, NJ 07043'),
-('maurom3', '$2y$10$Ti9Zbwx/OL9XV5GSty93k.RdOoVD2e1/sj5eg4IJ5yl9E4jzWea5u', 'maurom3@montclair.edu', 'Mark', 'Mauro', '1 Normal Ave, Montclair, NJ 07043');
-COMMIT;
+GRANT SELECT, INSERT, DELETE, UPDATE
+ON sushiclouddatabase.*
+TO sushicloud@localhost
+IDENTIFIED BY 'sushi_password';
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
