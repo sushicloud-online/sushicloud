@@ -25,6 +25,8 @@ else if (isset($_SESSION['anime_already_in_db']) && $_SESSION['anime_already_in_
 //informs the user if they have successfully registered
 else if (isset($_SESSION['reg_success']) && $_SESSION['reg_success'] == true) {
     $message = "<p class='text-success'>You have successfully registered!</p>";
+    $_SESSION['reg_success'] = false;
+
 }
 
 // user query for specific anime
